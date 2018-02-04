@@ -93,10 +93,13 @@ final class API
                 if let results = json as? [String: Any] {
                     if let users = results["users"] as? [[String: Any]] {
                         for follower in users {
-                            if let userName = follower["name"] as? String, let handle = follower["screen_name"] as? String, let bio = follower["description"] as? String, let profile_picture_URL = follower["profile_image_url_https"] as? String {
-                                let flwr = Follower(userName: userName, handle: handle, bio: bio, profile_picture_URL: profile_picture_URL)
-                                followers.append(flwr)
-                            }
+                            guard let userName = follower["name"] as? String, let handle = follower["screen_name"] as? String else { return }
+                            let bio = follower["description"] as? String
+                            let profile_picture_URL = follower["profile_image_url_https"] as? String
+                            let profile_banner_url = follower["profile_banner_url"] as? String
+                            let flwr = Follower(userName: userName, handle: handle, bio: bio, profile_picture_URL: profile_picture_URL, profile_banner_url: profile_banner_url)
+                            followers.append(flwr)
+                            
                         }
                     }
 //                    print(users![3]["name"]) // only one user's name

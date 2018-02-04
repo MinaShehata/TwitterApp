@@ -15,31 +15,35 @@ class FollowerCell: UICollectionViewCell {
     @IBOutlet weak var HandleLabel: UILabel!
     @IBOutlet weak var BioTextView: UITextView!
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
         profile_picture_URL.image = nil
         usernameLabel.text = nil
         HandleLabel.text = nil
         BioTextView.text = nil
-        
     }
-
+    
+    
     func setupCell(with follower: Follower) {
-        let userNameAttributedText = NSAttributedString(string: follower.userName, attributes: [NSAttributedStringKey.font : UIFont.boldSystemFont(ofSize: 16)])
+        let userNameAttributedText = NSAttributedString(string: follower.userName, attributes: [NSAttributedStringKey.font : UIFont.boldSystemFont(ofSize: 14)])
         usernameLabel.attributedText = userNameAttributedText
         // setup handle
         let usernameString = "@\(follower.handle)"
-        let handleAttributedText = NSAttributedString(string: usernameString, attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 15),NSAttributedStringKey.foregroundColor: #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)])
+        let handleAttributedText = NSAttributedString(string: usernameString, attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 12),NSAttributedStringKey.foregroundColor: #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)])
         HandleLabel.attributedText = handleAttributedText
         
         // setup textView........
-        let attributedBio = NSMutableAttributedString(string: follower.bio, attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 15)])
-        BioTextView.attributedText = attributedBio
+        if let bio = follower.bio {
+            let attributedBio = NSMutableAttributedString(string: bio, attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14)])
+            BioTextView.attributedText = attributedBio
+        }
         
         // setup Image
-        guard let url = URL(string: follower.profile_picture_URL) else { return }
+        guard let profilePicURL = follower.profile_picture_URL, let url = URL(string: profilePicURL) else {
+            profile_picture_URL.image = #imageLiteral(resourceName: "Mina2017")
+            return
+        }
         profile_picture_URL.loadProfileImageWithUrl(url: url)
     }
-    
 }

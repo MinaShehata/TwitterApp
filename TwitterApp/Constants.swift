@@ -14,6 +14,10 @@ class Constants {
     
     // cellID
     static let FollowerCell = "FollowerCell"
+    // segue identifier
+    static let follower_profile_data = "follower_profile_data"
+    
+    
     
     // some constants to get bearer token
     static let post = "POST"

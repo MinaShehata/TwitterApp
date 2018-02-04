@@ -29,6 +29,7 @@ class FollowerViewController: UIViewController {
         collectionView.dataSource = self
         collectionView.register(UINib(nibName: Constants.FollowerCell, bundle: nil), forCellWithReuseIdentifier: Constants.FollowerCell)
         collectionView.refreshControl = refreshControll
+        collectionView.contentInset = UIEdgeInsets(top: 5, left: 0, bottom: 0, right: 0)
         
         setupNavigationBarButtons()
         
@@ -36,7 +37,14 @@ class FollowerViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
         getAllFollowers()
+    }
+    
+   
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
     }
     
     // these Button just for enhance twitter UI Navigation Bar
@@ -70,25 +78,44 @@ class FollowerViewController: UIViewController {
             }
         }
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let identifier = segue.identifier, identifier == Constants.follower_profile_data {
+            if let vc = segue.destination as? ProfileViewController {
+                vc.follower = sender as? Follower
+            }
+        }
+    }
+    
 }
 
 extension FollowerViewController: UICollectionViewDelegateFlowLayout {
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
-        
-        let follower = followers[indexPath.item]
-        let aproximateWidthOfBioTextView = view.frame.width - 16 - 50 - 5 - 16 - 10
-        
-        let size = CGSize(width: aproximateWidthOfBioTextView, height: 1000)
-        
-        let attribute = [NSAttributedStringKey.font : UIFont.systemFont(ofSize: 15)]
-        
-        
-        let estimatedFrame = NSString(string: follower.bio).boundingRect(with: size, options: .usesLineFragmentOrigin, attributes: attribute, context: nil)
-        return CGSize(width: view.frame.width, height: estimatedFrame.height + 10 + 5 + 55)
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
     }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let follower = followers[indexPath.item]
+        let aproximateWidthOfBioTextView = view.frame.width - 16 - 40 - 5 - 16 - 5
+        
+        // if has bio or not
+        let size = CGSize(width: aproximateWidthOfBioTextView, height: 1000)
+       
+        let attribute = [NSAttributedStringKey.font : UIFont.systemFont(ofSize: 14)]
+       
+        if let bio = follower.bio, follower.bio != "" {
+            let estimatedFrame = NSString(string: bio).boundingRect(with: size, options: .usesLineFragmentOrigin, attributes: attribute, context: nil)
+            return CGSize(width: view.frame.width, height: estimatedFrame.height + 17 + 42)
+        }
+
+        return CGSize(width: view.frame.width, height: 59)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let selectedFollower = followers[indexPath.item]
+        performSegue(withIdentifier: Constants.follower_profile_data, sender: selectedFollower)
+    }
     
 }
 

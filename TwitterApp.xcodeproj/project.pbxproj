@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2F36543420274CB200BD0979 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F36543320274CB200BD0979 /* Profile.storyboard */; };
+		2F365436202761F500BD0979 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F365435202761F500BD0979 /* ProfileViewController.swift */; };
+		2F365439202795D600BD0979 /* UIButtonX.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F365437202795D500BD0979 /* UIButtonX.swift */; };
+		2F36543A202795D600BD0979 /* UIViewX.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F365438202795D600BD0979 /* UIViewX.swift */; };
 		2F9EEBD7202637150093FBDA /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9EEBD6202637150093FBDA /* API.swift */; };
 		2F9EEBDB202638240093FBDA /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9EEBDA202638240093FBDA /* User.swift */; };
 		2F9EEBE02026394D0093FBDA /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9EEBDF2026394D0093FBDA /* Constants.swift */; };
@@ -31,6 +35,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2F36543320274CB200BD0979 /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
+		2F365435202761F500BD0979 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		2F365437202795D500BD0979 /* UIButtonX.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIButtonX.swift; sourceTree = "<group>"; };
+		2F365438202795D600BD0979 /* UIViewX.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewX.swift; sourceTree = "<group>"; };
 		2F9EEBD6202637150093FBDA /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		2F9EEBDA202638240093FBDA /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		2F9EEBDF2026394D0093FBDA /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -120,6 +128,7 @@
 			children = (
 				2FA5CB772026183B00F1FA59 /* LoginViewController.swift */,
 				2F9EEC0620268C780093FBDA /* FollowerViewController.swift */,
+				2F365435202761F500BD0979 /* ProfileViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -129,6 +138,7 @@
 			children = (
 				2F9EEBEC20264AED0093FBDA /* Start.storyboard */,
 				2F9EEBF420265E5D0093FBDA /* Followers.storyboard */,
+				2F36543320274CB200BD0979 /* Profile.storyboard */,
 				2F9EEC02202687660093FBDA /* FollowerCell */,
 			);
 			path = Views;
@@ -146,6 +156,8 @@
 		2F9EEC03202687F10093FBDA /* DesignableX */ = {
 			isa = PBXGroup;
 			children = (
+				2F365437202795D500BD0979 /* UIButtonX.swift */,
+				2F365438202795D600BD0979 /* UIViewX.swift */,
 				2F9EEC042026880F0093FBDA /* UIImageViewX.swift */,
 			);
 			path = DesignableX;
@@ -278,6 +290,7 @@
 			files = (
 				2F9EEBF520265E5D0093FBDA /* Followers.storyboard in Resources */,
 				2F9EEC01202687600093FBDA /* FollowerCell.xib in Resources */,
+				2F36543420274CB200BD0979 /* Profile.storyboard in Resources */,
 				2F9EEBE5202639B10093FBDA /* LaunchScreen.storyboard in Resources */,
 				2FA5CB7D2026183B00F1FA59 /* Assets.xcassets in Resources */,
 				2F9EEBF7202660240093FBDA /* MedulaOne-Regular.ttf in Resources */,
@@ -361,8 +374,11 @@
 				2F9EEBFD202672E80093FBDA /* Follower.swift in Sources */,
 				2FA5CB782026183B00F1FA59 /* LoginViewController.swift in Sources */,
 				2F9EEC0720268C780093FBDA /* FollowerViewController.swift in Sources */,
+				2F36543A202795D600BD0979 /* UIViewX.swift in Sources */,
 				2FA5CB762026183B00F1FA59 /* AppDelegate.swift in Sources */,
 				2FD6D77C2026D7B700499C95 /* customImageView.swift in Sources */,
+				2F365439202795D600BD0979 /* UIButtonX.swift in Sources */,
+				2F365436202761F500BD0979 /* ProfileViewController.swift in Sources */,
 				2F9EEBD7202637150093FBDA /* API.swift in Sources */,
 				2F9EEBE02026394D0093FBDA /* Constants.swift in Sources */,
 			);
