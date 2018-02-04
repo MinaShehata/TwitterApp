@@ -12,6 +12,9 @@ class Constants {
     static let consumerKey = "tIGC04jlRQINK9psdsEyPg6GI"
     static let consumerSecret = "vLqhm04cyRrW7jeKMgwrX5ukyNsKyHOrrZSkKX56AXzJhOQ9MW"
     
+    // cellID
+    static let FollowerCell = "FollowerCell"
+    
     // some constants to get bearer token
     static let post = "POST"
     static let get = "GET"

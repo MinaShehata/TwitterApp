@@ -14,6 +14,15 @@
 		2F9EEBE7202639C90093FBDA /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F9EEBE6202639C90093FBDA /* Twitter.framework */; };
 		2F9EEBEA202640E30093FBDA /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9EEBE9202640E30093FBDA /* String+Extension.swift */; };
 		2F9EEBEE20264AED0093FBDA /* Start.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F9EEBEC20264AED0093FBDA /* Start.storyboard */; };
+		2F9EEBF520265E5D0093FBDA /* Followers.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F9EEBF420265E5D0093FBDA /* Followers.storyboard */; };
+		2F9EEBF7202660240093FBDA /* MedulaOne-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2F9EEBF6202660230093FBDA /* MedulaOne-Regular.ttf */; };
+		2F9EEBF9202660490093FBDA /* Kharabeesh Font.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2F9EEBF8202660490093FBDA /* Kharabeesh Font.ttf */; };
+		2F9EEBFB202667F50093FBDA /* helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9EEBFA202667F50093FBDA /* helper.swift */; };
+		2F9EEBFD202672E80093FBDA /* Follower.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9EEBFC202672E80093FBDA /* Follower.swift */; };
+		2F9EEC00202687600093FBDA /* FollowerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9EEBFE202687600093FBDA /* FollowerCell.swift */; };
+		2F9EEC01202687600093FBDA /* FollowerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F9EEBFF202687600093FBDA /* FollowerCell.xib */; };
+		2F9EEC052026880F0093FBDA /* UIImageViewX.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9EEC042026880F0093FBDA /* UIImageViewX.swift */; };
+		2F9EEC0720268C780093FBDA /* FollowerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9EEC0620268C780093FBDA /* FollowerViewController.swift */; };
 		2FA5CB762026183B00F1FA59 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA5CB752026183B00F1FA59 /* AppDelegate.swift */; };
 		2FA5CB782026183B00F1FA59 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA5CB772026183B00F1FA59 /* LoginViewController.swift */; };
 		2FA5CB7D2026183B00F1FA59 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2FA5CB7C2026183B00F1FA59 /* Assets.xcassets */; };
@@ -28,6 +37,15 @@
 		2F9EEBE6202639C90093FBDA /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
 		2F9EEBE9202640E30093FBDA /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		2F9EEBED20264AED0093FBDA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Start.storyboard; sourceTree = "<group>"; };
+		2F9EEBF420265E5D0093FBDA /* Followers.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Followers.storyboard; sourceTree = "<group>"; };
+		2F9EEBF6202660230093FBDA /* MedulaOne-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MedulaOne-Regular.ttf"; sourceTree = "<group>"; };
+		2F9EEBF8202660490093FBDA /* Kharabeesh Font.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Kharabeesh Font.ttf"; sourceTree = "<group>"; };
+		2F9EEBFA202667F50093FBDA /* helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = helper.swift; sourceTree = "<group>"; };
+		2F9EEBFC202672E80093FBDA /* Follower.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Follower.swift; sourceTree = "<group>"; };
+		2F9EEBFE202687600093FBDA /* FollowerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowerCell.swift; sourceTree = "<group>"; };
+		2F9EEBFF202687600093FBDA /* FollowerCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FollowerCell.xib; sourceTree = "<group>"; };
+		2F9EEC042026880F0093FBDA /* UIImageViewX.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageViewX.swift; sourceTree = "<group>"; };
+		2F9EEC0620268C780093FBDA /* FollowerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowerViewController.swift; sourceTree = "<group>"; };
 		2FA5CB722026183B00F1FA59 /* TwitterApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TwitterApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2FA5CB752026183B00F1FA59 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2FA5CB772026183B00F1FA59 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -63,6 +81,7 @@
 			isa = PBXGroup;
 			children = (
 				2F9EEBDA202638240093FBDA /* User.swift */,
+				2F9EEBFC202672E80093FBDA /* Follower.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -79,6 +98,8 @@
 			isa = PBXGroup;
 			children = (
 				2F9EEBE3202639B00093FBDA /* LaunchScreen.storyboard */,
+				2F9EEBF8202660490093FBDA /* Kharabeesh Font.ttf */,
+				2F9EEBF6202660230093FBDA /* MedulaOne-Regular.ttf */,
 				2FA5CB7C2026183B00F1FA59 /* Assets.xcassets */,
 			);
 			path = Resources;
@@ -96,8 +117,36 @@
 			isa = PBXGroup;
 			children = (
 				2FA5CB772026183B00F1FA59 /* LoginViewController.swift */,
+				2F9EEC0620268C780093FBDA /* FollowerViewController.swift */,
 			);
 			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		2F9EEBEF20265E060093FBDA /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				2F9EEBEC20264AED0093FBDA /* Start.storyboard */,
+				2F9EEBF420265E5D0093FBDA /* Followers.storyboard */,
+				2F9EEC02202687660093FBDA /* FollowerCell */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		2F9EEC02202687660093FBDA /* FollowerCell */ = {
+			isa = PBXGroup;
+			children = (
+				2F9EEBFE202687600093FBDA /* FollowerCell.swift */,
+				2F9EEBFF202687600093FBDA /* FollowerCell.xib */,
+			);
+			path = FollowerCell;
+			sourceTree = "<group>";
+		};
+		2F9EEC03202687F10093FBDA /* DesignableX */ = {
+			isa = PBXGroup;
+			children = (
+				2F9EEC042026880F0093FBDA /* UIImageViewX.swift */,
+			);
+			path = DesignableX;
 			sourceTree = "<group>";
 		};
 		2FA5CB692026183B00F1FA59 = {
@@ -124,11 +173,13 @@
 		2FA5CB742026183B00F1FA59 /* TwitterApp */ = {
 			isa = PBXGroup;
 			children = (
-				2F9EEBEC20264AED0093FBDA /* Start.storyboard */,
+				2F9EEBEF20265E060093FBDA /* Views */,
 				2F9EEBE1202639650093FBDA /* App Delegate */,
 				2F9EEBEB20264A840093FBDA /* ViewControllers */,
 				2F9EEBE2202639770093FBDA /* Resources */,
 				2FA5CB812026183B00F1FA59 /* Info.plist */,
+				2F9EEC03202687F10093FBDA /* DesignableX */,
+				2F9EEBFA202667F50093FBDA /* helper.swift */,
 				2F9EEBDF2026394D0093FBDA /* Constants.swift */,
 			);
 			path = TwitterApp;
@@ -214,8 +265,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2F9EEBF520265E5D0093FBDA /* Followers.storyboard in Resources */,
+				2F9EEC01202687600093FBDA /* FollowerCell.xib in Resources */,
 				2F9EEBE5202639B10093FBDA /* LaunchScreen.storyboard in Resources */,
 				2FA5CB7D2026183B00F1FA59 /* Assets.xcassets in Resources */,
+				2F9EEBF7202660240093FBDA /* MedulaOne-Regular.ttf in Resources */,
+				2F9EEBF9202660490093FBDA /* Kharabeesh Font.ttf in Resources */,
 				2F9EEBEE20264AED0093FBDA /* Start.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -288,8 +343,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				2F9EEBDB202638240093FBDA /* User.swift in Sources */,
+				2F9EEC052026880F0093FBDA /* UIImageViewX.swift in Sources */,
 				2F9EEBEA202640E30093FBDA /* String+Extension.swift in Sources */,
+				2F9EEC00202687600093FBDA /* FollowerCell.swift in Sources */,
+				2F9EEBFB202667F50093FBDA /* helper.swift in Sources */,
+				2F9EEBFD202672E80093FBDA /* Follower.swift in Sources */,
 				2FA5CB782026183B00F1FA59 /* LoginViewController.swift in Sources */,
+				2F9EEC0720268C780093FBDA /* FollowerViewController.swift in Sources */,
 				2FA5CB762026183B00F1FA59 /* AppDelegate.swift in Sources */,
 				2F9EEBD7202637150093FBDA /* API.swift in Sources */,
 				2F9EEBE02026394D0093FBDA /* Constants.swift in Sources */,

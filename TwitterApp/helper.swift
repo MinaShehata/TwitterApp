@@ -1,0 +1,54 @@
+//
+//  helper.swift
+//  TwitterApp
+//
+//  Created by Mina Gad on 2/3/18.
+//  Copyright © 2018 Mina Gad. All rights reserved.
+//
+
+import UIKit
+
+class helper: NSObject {
+    
+    
+    class func saveCredential(bearer_token: String, username: String)
+    {
+        // save api_token to user Defaults
+        let def = UserDefaults.standard
+        def.set(username, forKey: "username")
+        def.set(bearer_token, forKey: "bearer_token")
+        def.synchronize()
+        
+        restartApp()
+    }
+    
+    // get user as save it
+    class func getCredential() -> User? {
+        let def = UserDefaults.standard
+        if let username = def.object(forKey: "username") as? String, let bearer_token = def.object(forKey: "bearer_token") as? String {
+            let user = User(userName: username, bearer_token: bearer_token)
+            return user
+        }
+        return nil
+    }
+    
+    // retart app after login or register
+    class func restartApp(){
+        
+        guard let window = UIApplication.shared.keyWindow else { return }
+        let sb = UIStoryboard(name: "Start", bundle: nil)
+        var vc :UIViewController
+        if getCredential() == nil {
+            vc = sb.instantiateInitialViewController()!
+        }
+        else {
+            let sb = UIStoryboard(name: "Followers", bundle: nil)
+            vc = sb.instantiateInitialViewController()!
+        }
+        
+        window.rootViewController = vc
+        
+        UIView.transition(with: window, duration: 1, options: [], animations: nil, completion: nil)
+    }
+    
+}

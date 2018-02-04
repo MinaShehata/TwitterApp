@@ -10,15 +10,38 @@ import UIKit
 
 class LoginViewController: UIViewController {
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        setupLoginButton()
+    @IBOutlet weak var twitterLogoImageView: UIImageView! {
+        didSet
+        {
+            // for using tint color didn't work from interface builder xcode bug.
+            twitterLogoImageView.image = #imageLiteral(resourceName: "Twitter")
+        }
     }
     
-    func setupLoginButton() {
+    @IBOutlet weak var twitterTitleLabel: UILabel!
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setupAnimation()
+        setupLoginButton()
+        
+    }
+    
+    private func setupLoginButton() {
         API.shared.signedIn(view: view) { (user) in
-            print(user)
+            helper.saveCredential(bearer_token: user.bearer_token, username: user.userName)
         }
+    }
+    
+    private func setupAnimation(){
+        twitterTitleLabel.alpha = 0
+        twitterLogoImageView.alpha = 0
+        
+        UIView.animate(withDuration: 2.0, delay: 0, options: [.repeat, .autoreverse], animations: {
+            self.twitterTitleLabel.alpha = 1
+            self.twitterLogoImageView.alpha = 1
+        })
+        
     }
     
 }

@@ -8,8 +8,8 @@
 
 import Foundation
 
-// login User
 struct User {
-    let userName: String
-    let berear_token: String
+    var userName: String
+    var bearer_token: String
 }
+

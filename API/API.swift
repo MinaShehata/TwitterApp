@@ -62,8 +62,11 @@ final class API
                 return
             }
             if let session = session {
-                let user = User(userName: session.userName, berear_token: self.access_token)
-                completion(user)
+                let user = User(userName: session.userName, bearer_token: self.access_token)
+                DispatchQueue.main.async {
+                    completion(user)
+
+                }
             }
         }
         

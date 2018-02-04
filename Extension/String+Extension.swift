@@ -9,8 +9,8 @@
 import Foundation
 
 extension String {
-    // MARK:- base64Encode String for twitter authentication only...
-    func getBase64EncodeString(consumerKey: String, and consumerSecret: String) -> String {
+    // MARK:- base64Encode String for twitter authentication
+    public func getBase64EncodeString(consumerKey: String, and consumerSecret: String) -> String {
         guard let consumerkey = consumerKey.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed), let consumersecret = consumerSecret.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else { return "" }
         let concatenateKeyAndSecret = consumerkey + ":" + consumersecret
         guard let secretAndKeyData = concatenateKeyAndSecret.data(using: String.Encoding.ascii, allowLossyConversion: true) else { return "" }

@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="FollowerCell" id="gTV-IL-0wX" customClass="FollowerCell" customModule="TwitterApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="455" height="161"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="455" height="161"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Mina2017" translatesAutoresizingMaskIntoConstraints="NO" id="YJv-g9-A5n" customClass="UIImageViewX" customModule="TwitterApp" customModuleProvider="target">
+                        <rect key="frame" x="16" y="10" width="50" height="50"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="50" id="2mq-kg-2er"/>
+                            <constraint firstAttribute="width" constant="50" id="aZM-Uf-U24"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="5"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                <real key="value" value="1"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </imageView>
+                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" editable="NO" text="My name is Mina Shehata Gad ,I 'm senior iOS Developer, Love iOS Programming" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ISI-c9-SRX">
+                        <rect key="frame" x="71" y="57" width="368" height="98"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                    </textView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eZJ-UW-cVD">
+                        <rect key="frame" x="0.0" y="160" width="455" height="1"/>
+                        <color key="backgroundColor" red="0.84705882352941175" green="0.8784313725490196" blue="0.89803921568627454" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="fOO-fl-TnC"/>
+                        </constraints>
+                    </view>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="7Fs-xT-60J">
+                        <rect key="frame" x="71" y="10" width="368" height="42"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mina Shehata" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fC8-gd-NIT">
+                                <rect key="frame" x="0.0" y="0.0" width="119.5" height="24"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@minashehata5" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u3i-QS-qUb">
+                                <rect key="frame" x="0.0" y="24" width="110.5" height="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                    </stackView>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="ISI-c9-SRX" secondAttribute="trailing" constant="16" id="2Dd-gt-SIU"/>
+                <constraint firstItem="YJv-g9-A5n" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="16" id="J7W-uo-of4"/>
+                <constraint firstItem="7Fs-xT-60J" firstAttribute="top" secondItem="YJv-g9-A5n" secondAttribute="top" id="LXm-FA-Pn5"/>
+                <constraint firstAttribute="trailing" secondItem="7Fs-xT-60J" secondAttribute="trailing" constant="16" id="O6w-0y-rl7"/>
+                <constraint firstItem="eZJ-UW-cVD" firstAttribute="top" secondItem="ISI-c9-SRX" secondAttribute="bottom" constant="5" id="QnL-Y6-bFH"/>
+                <constraint firstItem="eZJ-UW-cVD" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="WD2-Kn-FcM"/>
+                <constraint firstAttribute="bottom" secondItem="eZJ-UW-cVD" secondAttribute="bottom" id="bB3-sq-cVf"/>
+                <constraint firstItem="ISI-c9-SRX" firstAttribute="leading" secondItem="7Fs-xT-60J" secondAttribute="leading" id="ltm-Wl-H2g"/>
+                <constraint firstItem="7Fs-xT-60J" firstAttribute="leading" secondItem="YJv-g9-A5n" secondAttribute="trailing" constant="5" id="q9Y-rP-m8h"/>
+                <constraint firstItem="ISI-c9-SRX" firstAttribute="top" secondItem="7Fs-xT-60J" secondAttribute="bottom" constant="5" id="sLi-xS-Cpd"/>
+                <constraint firstAttribute="trailing" secondItem="eZJ-UW-cVD" secondAttribute="trailing" id="tzK-lh-8Dv"/>
+                <constraint firstItem="YJv-g9-A5n" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="10" id="xlz-xh-qEF"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <size key="customSize" width="455" height="161"/>
+            <connections>
+                <outlet property="bioTextView" destination="ISI-c9-SRX" id="jVU-dx-rrq"/>
+                <outlet property="handleLabel" destination="u3i-QS-qUb" id="MiH-G4-Mky"/>
+                <outlet property="nameLabel" destination="fC8-gd-NIT" id="5UH-IZ-OCu"/>
+                <outlet property="profile_picture_URL" destination="YJv-g9-A5n" id="N8W-bn-ip2"/>
+            </connections>
+            <point key="canvasLocation" x="93.5" y="139.5"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="Mina2017" width="960" height="960"/>
+    </resources>
+</document>
