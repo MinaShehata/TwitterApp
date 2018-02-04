@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Home-->
+        <!--Follower View Controller-->
         <scene sceneID="1WQ-Dg-zgt">
             <objects>
                 <viewController automaticallyAdjustsScrollViewInsets="NO" id="I48-Ei-wrA" customClass="FollowerViewController" customModule="TwitterApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -30,7 +30,7 @@
                                 <cells/>
                             </collectionView>
                         </subviews>
-                        <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="mjN-oK-FMZ" firstAttribute="top" secondItem="dM5-8n-0vr" secondAttribute="top" id="AJs-kf-upx"/>
                             <constraint firstItem="mjN-oK-FMZ" firstAttribute="bottom" secondItem="dM5-8n-0vr" secondAttribute="bottom" id="BKI-oo-Pxh"/>
@@ -39,7 +39,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="dM5-8n-0vr"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Home" id="Zqz-WQ-ov7"/>
+                    <navigationItem key="navigationItem" id="Zqz-WQ-ov7"/>
                     <connections>
                         <outlet property="collectionView" destination="mjN-oK-FMZ" id="zxZ-UK-bRn"/>
                     </connections>

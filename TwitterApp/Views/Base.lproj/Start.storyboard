@@ -43,6 +43,7 @@
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="nC6-i4-yFE" firstAttribute="top" secondItem="hK9-SR-vVb" secondAttribute="top" constant="50" id="RAe-hw-PPT"/>
                             <constraint firstItem="nC6-i4-yFE" firstAttribute="centerX" secondItem="d1v-vB-Nzf" secondAttribute="centerX" id="Rjb-9l-QHz"/>

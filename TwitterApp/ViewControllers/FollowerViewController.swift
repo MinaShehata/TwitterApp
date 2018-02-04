@@ -12,34 +12,70 @@ class FollowerViewController: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
     
+    // instantiate refresh control just when user refresh
+    lazy var refreshControll: UIRefreshControl = {
+        let refresher = UIRefreshControl()
+        refresher.addTarget(self, action: #selector(getAllFollowers), for: .valueChanged)
+        return refresher
+    }()
+    
     var followers: [Follower] = []
-    
-    let mina = Follower(userName: "Mina Shehata", handle: "@minashehata5", bio: "skjdfbsdfkbsdf fdmsbfkjbsdkjfs dfsdfbndsjkfbsdkjfbdsfsd ......", profile_picture_URL: "")
-    
-    let mina2 = Follower(userName: "Mina Shehata", handle: "@minashehata5", bio: "My name is Mina Shehata Gad ,I 'm senior iOS Developer, Love iOS Programminga Gad ,I 'm senior iOS Developer, Love iOS Programming a Gad ,I 'm senior iOS Developer, Love iOS Programming a Gad ,I 'm senior iOS Developer, Love iOS Programming", profile_picture_URL: "")
-    
-    let mina3 = Follower(userName: "Mina Shehata", handle: "@minashehata5", bio: "My name is Mina Shehata Gad ", profile_picture_URL: "")
-    let mina4 = Follower(userName: "Mina Shehata", handle: "@minashehata5", bio: "My name is Mina Shehata Gad ,I 'm My name is Mina Shehata Gad ,I 'm senior iOS Developer, Love iOS Programming", profile_picture_URL: "")
-    
+  
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        collectionView?.backgroundColor = UIColor(red: 232/255, green: 236/255, blue: 241/255, alpha: 1)
-        
-        followers = [mina, mina2, mina3, mina4]
         
         // setupCollectionView
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.register(UINib(nibName: Constants.FollowerCell, bundle: nil), forCellWithReuseIdentifier: Constants.FollowerCell)
+        collectionView.refreshControl = refreshControll
+        
+        setupNavigationBarButtons()
+        
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        getAllFollowers()
+    }
     
+    // these Button just for enhance twitter UI Navigation Bar
+    private func setupNavigationBarButtons(){
+        
+        let twitterTitle = UIBarButtonItem(title: "Followers", style: .plain, target: nil, action: nil)
+        navigationItem.leftBarButtonItem = twitterTitle
+        
+        let composeTweet = UIBarButtonItem(image: #imageLiteral(resourceName: "Compose Tweet"), style: .plain, target: nil, action: nil)
+         let searchTweet = UIBarButtonItem(image: #imageLiteral(resourceName: "Search"), style: .plain, target: nil, action: nil)
+        navigationItem.rightBarButtonItems = [composeTweet, searchTweet]
+        //
+        let imageView = UIImageView(image: #imageLiteral(resourceName: "Tweeter logo"))
+        imageView.contentMode = .scaleAspectFit
+        imageView.frame = CGRect(x: 0, y: 0, width: 40, height: 28)
+        let view = UIView(frame: CGRect(x: 0, y: 0, width: 40, height: 28))
+        view.addSubview(imageView)
+        navigationItem.titleView = view
+    }
+    
+    // added @objc because of #selector is Objective-c Function
+    @objc private func getAllFollowers() {
+        guard let user = helper.getCredential() else { return }
+        let parameter = "screen_name=\(user.userName)"
+        guard let url = URL(string: "\(Constants.followers)?\(parameter)") else { return }
+        API.shared.getFollowers(url: url, bearer: user.bearer_token) { (followers) in
+            if let followers = followers {
+                self.refreshControll.endRefreshing()
+                self.followers = followers
+                self.collectionView.reloadData()
+            }
+        }
+    }
 }
 
 extension FollowerViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
         
         let follower = followers[indexPath.item]
         let aproximateWidthOfBioTextView = view.frame.width - 16 - 50 - 5 - 16 - 10
@@ -50,7 +86,7 @@ extension FollowerViewController: UICollectionViewDelegateFlowLayout {
         
         
         let estimatedFrame = NSString(string: follower.bio).boundingRect(with: size, options: .usesLineFragmentOrigin, attributes: attribute, context: nil)
-        return CGSize(width: view.frame.width, height: estimatedFrame.height + 10 + 5 + 60)
+        return CGSize(width: view.frame.width, height: estimatedFrame.height + 10 + 5 + 55)
     }
     
     

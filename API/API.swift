@@ -63,15 +63,53 @@ final class API
             }
             if let session = session {
                 let user = User(userName: session.userName, bearer_token: self.access_token)
-                DispatchQueue.main.async {
+                DispatchQueue.main.asyncAfter(deadline: DispatchTime(uptimeNanoseconds: 2), execute: {
                     completion(user)
-
-                }
+                })
             }
         }
         
         loginButton.center = view.center
         view.addSubview(loginButton)
+    }
+    
+    
+    func getFollowers(url: URL, bearer: String, completion: @escaping ([Follower]?) -> ()) {
+        var followers = [Follower]()
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = Constants.get
+        // this header required for oauth 2.0 twitter Authentication
+        let token = "Bearer " + bearer
+        request.addValue(token, forHTTPHeaderField: "Authorization")
+        //
+        let task = self.session.dataTask(with: request, completionHandler: { (data, response, error) in
+            if let error = error {
+                print(error.localizedDescription)
+            }
+            guard let data = data else {return}
+            do {
+                let json = try JSONSerialization.jsonObject(with: data, options: [])
+                if let results = json as? [String: Any] {
+                    if let users = results["users"] as? [[String: Any]] {
+                        for follower in users {
+                            if let userName = follower["name"] as? String, let handle = follower["screen_name"] as? String, let bio = follower["description"] as? String, let profile_picture_URL = follower["profile_image_url_https"] as? String {
+                                let flwr = Follower(userName: userName, handle: handle, bio: bio, profile_picture_URL: profile_picture_URL)
+                                followers.append(flwr)
+                            }
+                        }
+                    }
+//                    print(users![3]["name"]) // only one user's name
+                }
+                DispatchQueue.main.async {
+                    completion(followers)
+                }
+            }
+            catch {
+                print(error.localizedDescription)
+            }
+        })
+        task.resume()
     }
     
 //    func getResponseForRequest(url: URL) {

@@ -14,7 +14,7 @@ class LoginViewController: UIViewController {
         didSet
         {
             // for using tint color didn't work from interface builder xcode bug.
-            twitterLogoImageView.image = #imageLiteral(resourceName: "Twitter")
+            twitterLogoImageView.image = #imageLiteral(resourceName: "Tweeter logo")
         }
     }
     
