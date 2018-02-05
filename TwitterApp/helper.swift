@@ -51,4 +51,14 @@ class helper: NSObject {
         UIView.transition(with: window, duration: 1, options: [], animations: nil, completion: nil)
     }
     
+    
+    class func estimateFrameForText(text: String, size: CGFloat) -> CGRect {
+        // this attribute must be big than prefered font
+        let attribute = [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 16)]
+        // this size must be big that real size
+        let size = CGSize(width: size, height: 1000)
+        let options = NSStringDrawingOptions.usesFontLeading.union(.usesLineFragmentOrigin)
+        return NSString(string: text).boundingRect(with: size, options: options, attributes: attribute, context: nil)
+    }
+    
 }

@@ -30,60 +30,15 @@
                                     <constraint firstAttribute="height" constant="200" id="RGE-wK-ypu"/>
                                 </constraints>
                             </imageView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AjG-iW-G3M">
-                                <rect key="frame" x="0.0" y="142" width="375" height="200"/>
-                                <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Mina2017" translatesAutoresizingMaskIntoConstraints="NO" id="khp-sG-jFM" customClass="customImageView" customModule="TwitterApp" customModuleProvider="target">
-                                        <rect key="frame" x="20" y="-40" width="80" height="80"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="80" id="K79-qG-ZQZ"/>
-                                            <constraint firstAttribute="width" constant="80" id="dd7-i4-Fgg"/>
-                                        </constraints>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                <real key="value" value="2"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                <real key="value" value="5"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                    </imageView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="2QW-pG-1aT">
-                                        <rect key="frame" x="20" y="50" width="126.5" height="56"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mina Shehata" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ae3-X0-fyz">
-                                                <rect key="frame" x="0.0" y="0.0" width="126.5" height="35.5"/>
-                                                <fontDescription key="fontDescription" name="Kharabeesh" family="Kharabeesh Font" pointSize="25"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@minashehata5" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kax-Ho-ss9">
-                                                <rect key="frame" x="0.0" y="35.5" width="123.5" height="20.5"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                        </subviews>
-                                    </stackView>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstItem="khp-sG-jFM" firstAttribute="leading" secondItem="AjG-iW-G3M" secondAttribute="leading" constant="20" id="Qka-hq-rTN"/>
-                                    <constraint firstItem="2QW-pG-1aT" firstAttribute="top" secondItem="khp-sG-jFM" secondAttribute="bottom" constant="10" id="VIU-Nd-j72"/>
-                                    <constraint firstItem="2QW-pG-1aT" firstAttribute="leading" secondItem="khp-sG-jFM" secondAttribute="leading" id="W44-6L-Bb0"/>
-                                    <constraint firstItem="khp-sG-jFM" firstAttribute="top" secondItem="AjG-iW-G3M" secondAttribute="top" constant="-40" id="XPo-9j-jnZ"/>
-                                    <constraint firstAttribute="height" constant="200" id="bka-iK-aQn"/>
-                                </constraints>
-                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oF3-Kc-Q27" customClass="UIViewX" customModule="TwitterApp" customModuleProvider="target">
                                 <rect key="frame" x="16" y="36" width="32" height="32"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wpb-9W-hHm">
                                         <rect key="frame" x="8" y="8" width="16" height="16"/>
                                         <state key="normal" backgroundImage="BackButton"/>
+                                        <connections>
+                                            <action selector="backButton:" destination="mxN-4G-W3D" eventType="touchUpInside" id="4Gi-v9-Oyk"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.14335605500000001" green="0.1862597466" blue="0.28200483320000003" alpha="0.66564105308219179" colorSpace="custom" customColorSpace="sRGB"/>
@@ -102,21 +57,107 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AjG-iW-G3M">
+                                <rect key="frame" x="0.0" y="138" width="375" height="529"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Mina2017" translatesAutoresizingMaskIntoConstraints="NO" id="khp-sG-jFM" customClass="customImageView" customModule="TwitterApp" customModuleProvider="target">
+                                        <rect key="frame" x="20" y="-40" width="80" height="80"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="80" id="2bJ-0J-xts"/>
+                                            <constraint firstAttribute="height" constant="80" id="TzU-Ww-E2H"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="2"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </imageView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="2QW-pG-1aT">
+                                        <rect key="frame" x="20" y="45" width="111.5" height="49.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mina Shehata" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ae3-X0-fyz">
+                                                <rect key="frame" x="0.0" y="0.0" width="111.5" height="31.5"/>
+                                                <fontDescription key="fontDescription" name="Kharabeesh" family="Kharabeesh Font" pointSize="22"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@minashehata5" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kax-Ho-ss9">
+                                                <rect key="frame" x="0.0" y="31.5" width="110.5" height="18"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c8J-yc-P5e" customClass="UIButtonX" customModule="TwitterApp" customModuleProvider="target">
+                                        <rect key="frame" x="245" y="10" width="120" height="34"/>
+                                        <color key="backgroundColor" red="0.11372549019607843" green="0.63137254901960782" blue="0.94901960784313721" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="34" id="NLB-LC-Qmp"/>
+                                            <constraint firstAttribute="width" constant="120" id="sBL-KH-CyD"/>
+                                        </constraints>
+                                        <state key="normal" title="Following">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H9q-Dq-fOC">
+                                        <rect key="frame" x="204" y="10" width="36" height="34"/>
+                                        <state key="normal" image="ConfigButton"/>
+                                    </button>
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="d4V-3I-u0H">
+                                        <rect key="frame" x="0.0" y="131" width="375" height="398"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="owk-KX-QLE">
+                                            <size key="itemSize" width="50" height="50"/>
+                                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        </collectionViewFlowLayout>
+                                        <cells/>
+                                    </collectionView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="2QW-pG-1aT" firstAttribute="top" secondItem="khp-sG-jFM" secondAttribute="bottom" constant="5" id="03C-MC-YfD"/>
+                                    <constraint firstItem="khp-sG-jFM" firstAttribute="top" secondItem="AjG-iW-G3M" secondAttribute="top" constant="-40" id="BvN-DR-0n2"/>
+                                    <constraint firstAttribute="trailing" secondItem="c8J-yc-P5e" secondAttribute="trailing" constant="10" id="P16-7t-Ni6"/>
+                                    <constraint firstItem="khp-sG-jFM" firstAttribute="leading" secondItem="AjG-iW-G3M" secondAttribute="leading" constant="20" id="PVo-1V-lXi"/>
+                                    <constraint firstItem="c8J-yc-P5e" firstAttribute="top" secondItem="AjG-iW-G3M" secondAttribute="top" constant="10" id="QyR-1R-ck1"/>
+                                    <constraint firstItem="c8J-yc-P5e" firstAttribute="leading" secondItem="H9q-Dq-fOC" secondAttribute="trailing" constant="5" id="Zpb-Qr-vsO"/>
+                                    <constraint firstItem="2QW-pG-1aT" firstAttribute="leading" secondItem="khp-sG-jFM" secondAttribute="leading" id="o2E-5e-fw7"/>
+                                    <constraint firstItem="H9q-Dq-fOC" firstAttribute="centerY" secondItem="c8J-yc-P5e" secondAttribute="centerY" id="zL4-Ir-rVA"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="2Cc-et-6gR" firstAttribute="top" secondItem="h7S-oQ-PUH" secondAttribute="top" id="9pm-NR-KfH"/>
-                            <constraint firstItem="AjG-iW-G3M" firstAttribute="trailing" secondItem="fAT-9t-5Bg" secondAttribute="trailing" id="AXa-1K-iwG"/>
+                            <constraint firstItem="fAT-9t-5Bg" firstAttribute="bottom" secondItem="AjG-iW-G3M" secondAttribute="bottom" id="Bg5-f6-j08"/>
                             <constraint firstItem="2Cc-et-6gR" firstAttribute="trailing" secondItem="fAT-9t-5Bg" secondAttribute="trailing" id="I1Q-nw-eVD"/>
                             <constraint firstItem="oF3-Kc-Q27" firstAttribute="leading" secondItem="fAT-9t-5Bg" secondAttribute="leading" constant="16" id="WXL-1O-5t4"/>
-                            <constraint firstItem="AjG-iW-G3M" firstAttribute="top" secondItem="2Cc-et-6gR" secondAttribute="bottom" constant="-58" id="cji-9G-6at"/>
+                            <constraint firstItem="AjG-iW-G3M" firstAttribute="leading" secondItem="fAT-9t-5Bg" secondAttribute="leading" id="ann-gt-2Qr"/>
+                            <constraint firstItem="AjG-iW-G3M" firstAttribute="top" secondItem="2Cc-et-6gR" secondAttribute="bottom" constant="-62" id="lDq-NT-Ycx"/>
                             <constraint firstItem="oF3-Kc-Q27" firstAttribute="top" secondItem="fAT-9t-5Bg" secondAttribute="top" constant="16" id="oij-0P-871"/>
-                            <constraint firstItem="AjG-iW-G3M" firstAttribute="leading" secondItem="fAT-9t-5Bg" secondAttribute="leading" id="pX1-L5-2Zp"/>
+                            <constraint firstItem="AjG-iW-G3M" firstAttribute="trailing" secondItem="fAT-9t-5Bg" secondAttribute="trailing" id="qQH-j3-GUL"/>
                             <constraint firstItem="2Cc-et-6gR" firstAttribute="leading" secondItem="fAT-9t-5Bg" secondAttribute="leading" id="uvi-pE-93r"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="fAT-9t-5Bg"/>
                     </view>
                     <connections>
+                        <outlet property="collectionView" destination="d4V-3I-u0H" id="cGA-VR-HGF"/>
+                        <outlet property="containterView" destination="AjG-iW-G3M" id="TeW-ch-pHC"/>
+                        <outlet property="followingButton" destination="c8J-yc-P5e" id="02u-4u-8Yo"/>
                         <outlet property="handleLabel" destination="kax-Ho-ss9" id="XQU-lx-nfz"/>
                         <outlet property="profile_banner_imageView" destination="2Cc-et-6gR" id="7KJ-V7-Pbt"/>
                         <outlet property="profile_picture_imageView" destination="khp-sG-jFM" id="4oK-lY-lII"/>
@@ -130,6 +171,7 @@
     </scenes>
     <resources>
         <image name="BackButton" width="32" height="32"/>
+        <image name="ConfigButton" width="36" height="34"/>
         <image name="Mina2017" width="960" height="960"/>
     </resources>
 </document>

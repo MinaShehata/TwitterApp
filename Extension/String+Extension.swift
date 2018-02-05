@@ -17,5 +17,12 @@ extension String {
         // final result
         let base64EncodeKeyAndSecret = secretAndKeyData.base64EncodedString(options: Data.Base64EncodingOptions())
         return base64EncodeKeyAndSecret
-    }    
+    }
+    
+    func formatDateFromServer() -> String {
+        let indexStartOfText = self.index(self.startIndex, offsetBy: 9)
+        let serverValue = self[...indexStartOfText]
+        return String(serverValue)
+    }
+    
 }

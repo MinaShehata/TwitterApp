@@ -13,7 +13,10 @@ class Constants {
     static let consumerSecret = "vLqhm04cyRrW7jeKMgwrX5ukyNsKyHOrrZSkKX56AXzJhOQ9MW"
     
     // cellID
-    static let FollowerCell = "FollowerCell"
+    static let FollowerCell = "FollowerCell" // for collectionView
+    static let TweetCell = "TweetCell" // for tableView
+    
+    
     // segue identifier
     static let follower_profile_data = "follower_profile_data"
     
@@ -32,7 +35,8 @@ class Constants {
     // Main URL For API
     static let main = "https://api.twitter.com/1.1/"
     
-    // get Followers of User { GET }
+    // get Followers of User { GET query[handle of user]}
     static let followers = main + "followers/list.json"
-    
+    // get last ten tweets of follower { get query[handle of follower]}
+    static let tweets = main + "search/tweets.json"
 }

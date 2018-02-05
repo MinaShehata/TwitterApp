@@ -54,9 +54,7 @@ class customImageView: UIImageViewX {
         }
         
         //        }).resume()
-        
-        
+                
     }
-    
 }
 

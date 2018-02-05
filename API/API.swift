@@ -102,7 +102,6 @@ final class API
                             
                         }
                     }
-//                    print(users![3]["name"]) // only one user's name
                 }
                 DispatchQueue.main.async {
                     completion(followers)
@@ -114,6 +113,44 @@ final class API
         })
         task.resume()
     }
+    
+    
+    func getFollowerLastTenTweets(follower: Follower, url: URL, bearer: String, completion: @escaping ([Tweet]?) -> ()) {
+        var tweets = [Tweet]()
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = Constants.get
+        // this header required for oauth 2.0 twitter Authentication
+        let token = "Bearer " + bearer
+        request.addValue(token, forHTTPHeaderField: "Authorization")
+        //
+        let task = self.session.dataTask(with: request, completionHandler: { (data, response, error) in
+            if let error = error {
+                print(error.localizedDescription)
+            }
+            guard let data = data else {return}
+            do {
+                let json = try JSONSerialization.jsonObject(with: data, options: [])
+                if let json = json as? [String: Any], let status = json["statuses"] as? [[String: Any]] {
+                    for st in status {
+                        if let text = st["text"] as? String, let created_at = st["created_at"] as? String {
+                            let tweet = Tweet(follower: follower, text: text, created_at: created_at)
+                            tweets.append(tweet)
+                        }
+                    }
+                }
+                DispatchQueue.main.async {
+                    completion(tweets)
+                }
+            }
+            catch {
+                print(error.localizedDescription)
+            }
+        })
+        task.resume()
+    }
+
+    
     
 //    func getResponseForRequest(url: URL) {
 //

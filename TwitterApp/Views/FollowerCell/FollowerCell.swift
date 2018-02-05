@@ -30,7 +30,7 @@ class FollowerCell: UICollectionViewCell {
         usernameLabel.attributedText = userNameAttributedText
         // setup handle
         let usernameString = "@\(follower.handle)"
-        let handleAttributedText = NSAttributedString(string: usernameString, attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 12),NSAttributedStringKey.foregroundColor: #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)])
+        let handleAttributedText = NSAttributedString(string: usernameString, attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 12), NSAttributedStringKey.foregroundColor: #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)])
         HandleLabel.attributedText = handleAttributedText
         
         // setup textView........

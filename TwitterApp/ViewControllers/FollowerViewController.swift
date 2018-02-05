@@ -97,7 +97,7 @@ extension FollowerViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let follower = followers[indexPath.item]
-        let aproximateWidthOfBioTextView = view.frame.width - 16 - 40 - 5 - 16 - 5
+        let aproximateWidthOfBioTextView = view.frame.width - 16 - 40 - 5 - 16 - 10
         
         // if has bio or not
         let size = CGSize(width: aproximateWidthOfBioTextView, height: 1000)
