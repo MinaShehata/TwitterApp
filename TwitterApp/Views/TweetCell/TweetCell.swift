@@ -39,7 +39,7 @@ class TweetCell: UICollectionViewCell {
         let handleText = NSAttributedString(string: "@\(follower.handle)", attributes: [NSAttributedStringKey.font : UIFont.boldSystemFont(ofSize: 13), NSAttributedStringKey.foregroundColor: #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)])
         handleLabel.attributedText = handleText
         
-        let created_atText = NSAttributedString(string: "\(tweet.created_at.formatDateFromServer())", attributes: [NSAttributedStringKey.font : UIFont.boldSystemFont(ofSize: 13), NSAttributedStringKey.foregroundColor: #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)])
+        let created_atText = NSAttributedString(string: "\(tweet.created_at)", attributes: [NSAttributedStringKey.font : UIFont.systemFont(ofSize: 12), NSAttributedStringKey.foregroundColor: #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)])
         created_atLabel.attributedText = created_atText
     }
 }

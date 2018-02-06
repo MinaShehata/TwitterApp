@@ -60,5 +60,4 @@ class helper: NSObject {
         let options = NSStringDrawingOptions.usesFontLeading.union(.usesLineFragmentOrigin)
         return NSString(string: text).boundingRect(with: size, options: options, attributes: attribute, context: nil)
     }
-    
 }

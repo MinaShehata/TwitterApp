@@ -16,6 +16,9 @@ final class API
     static let shared = API()
     private init(){} // private initializer to make sure that class will not initialize from any other Place....
     
+    
+    // networking Stuff........................../////////////////////////////////////////////////////
+    
     // store access token of user
     private var access_token = ""
 
@@ -133,13 +136,14 @@ final class API
                 let json = try JSONSerialization.jsonObject(with: data, options: [])
                 if let json = json as? [String: Any], let status = json["statuses"] as? [[String: Any]] {
                     for st in status {
-                        if let text = st["text"] as? String, let created_at = st["created_at"] as? String {
-                            let tweet = Tweet(follower: follower, text: text, created_at: created_at)
+                        if let id = st["id"] as? NSNumber, let text = st["text"] as? String, let created_at = st["created_at"] as? String {
+                            let tweet = Tweet(id: id, follower: follower, text: text, created_at: created_at.formatDateFromServer())
                             tweets.append(tweet)
                         }
                     }
                 }
                 DispatchQueue.main.async {
+                    
                     completion(tweets)
                 }
             }
@@ -149,40 +153,5 @@ final class API
         })
         task.resume()
     }
-
-    
-    
-//    func getResponseForRequest(url: URL) {
-//
-//        getBearerToken(completion: { (bearer) in
-//
-//            var request = URLRequest(url: url)
-//            request.httpMethod = Constants.get
-//
-//            let token = "Bearer " + bearer
-//            request.addValue(token, forHTTPHeaderField: "Authorization")
-//
-//            let task = session.dataTask(with: request, completionHandler: { (data, response, error) in
-//                if let error = error {
-//                    print(error.localizedDescription)
-//                    return
-//                }
-//                guard let data = data else { return }
-//
-//                do {
-//                    let json = try JSONSerialization.jsonObject(with: data, options: [])
-//                    if let results = json as? [String: Any] {
-//                        let users = results["users"]as? [[String: Any]]
-//                        print(users![3]["name"])
-//                    }
-//                }
-//                catch {
-//                    print(error.localizedDescription)
-//                }
-//
-//            })
-//            task.resume()
-//        })
-//    }
     
 }

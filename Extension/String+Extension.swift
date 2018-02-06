@@ -19,10 +19,21 @@ extension String {
         return base64EncodeKeyAndSecret
     }
     
+    // format date to human readable String Date + time from server
     func formatDateFromServer() -> String {
-        let indexStartOfText = self.index(self.startIndex, offsetBy: 9)
-        let serverValue = self[...indexStartOfText]
-        return String(serverValue)
+        let indexStartOfMonth = self.index(self.startIndex, offsetBy: 3)
+        let indexEndOfMonth = self.index(indexStartOfMonth, offsetBy: 7)
+        let date = self[indexStartOfMonth...indexEndOfMonth]
+        
+        let startTime = self.index(indexEndOfMonth, offsetBy: 1)
+        let endTime = self.index(startTime, offsetBy: 7)
+        
+        let startYear = self.index(endTime, offsetBy: 7)
+        let year = self[startYear...]
+        let time = self[startTime...endTime]
+        
+        let allDate = "\(time)\(date)\(year)"
+        return allDate
     }
-    
+ 
 }

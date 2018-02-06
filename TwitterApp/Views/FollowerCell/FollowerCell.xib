@@ -33,7 +33,7 @@
                                 <real key="value" value="1"/>
                             </userDefinedRuntimeAttribute>
                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                <real key="value" value="5"/>
+                                <real key="value" value="20"/>
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </imageView>
@@ -94,6 +94,6 @@
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="Mina2017" width="960" height="960"/>
+        <image name="Mina2017" width="56" height="56"/>
     </resources>
 </document>

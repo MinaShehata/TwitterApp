@@ -14,19 +14,17 @@ class Constants {
     
     // cellID
     static let FollowerCell = "FollowerCell" // for collectionView
-    static let TweetCell = "TweetCell" // for tableView
-    
+    static let ProfileHeader = "ProfileHeader" // for collectionView profile Header
+    static let TweetCell = "TweetCell" // for collectionView Tweet Cell
+    //
     
     // segue identifier
     static let follower_profile_data = "follower_profile_data"
-    
-    
     
     // some constants to get bearer token
     static let post = "POST"
     static let get = "GET"
     static let grantType =  "grant_type=client_credentials"
-    
     
     
     // host URL that contain Berear Token.....

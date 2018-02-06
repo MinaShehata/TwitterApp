@@ -1,9 +1,9 @@
 //
-//  UIImageViewX.swift
-//  003 - Onboarding Page
+//  ProfileViewController+Extension.swift
+//  TwitterApp
 //
-//  Created by Mark Moeykens on 1/5/17.
-//  Copyright © 2017 Mark Moeykens. All rights reserved.
+//  Created by Mina Gad on 2/5/18.
+//  Copyright © 2018 Mina Gad. All rights reserved.
 //
 
 import UIKit

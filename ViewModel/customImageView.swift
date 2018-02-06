@@ -27,23 +27,13 @@ class customImageView: UIImageViewX {
             return
         }
         
-        
-//        URLSession.shared.dataTask(with: url, completionHandler: { (data, response, error) in
-//            if error != nil {
-//
-//                print(error?.localizedDescription ?? "")
-//            }
-//            guard let data = data else { return }
-        
-        DispatchQueue.global(qos: .userInitiated).async { //[weak self]
+        DispatchQueue.global(qos: .userInitiated).async { [weak self] in // to break memory cycle
             do{
                 let imageData = try Data(contentsOf: url)
-                
-                
                 DispatchQueue.main.async {
-                    if let downloadesImage = UIImage(data: imageData), url == self.imageUrl{
+                    if let downloadesImage = UIImage(data: imageData), url == self?.imageUrl{
                         imageCashe.setObject(downloadesImage, forKey: url as NSURL)
-                        self.image = downloadesImage
+                        self?.image = downloadesImage
                     }
                 }
             }
@@ -53,8 +43,6 @@ class customImageView: UIImageViewX {
             }
         }
         
-        //        }).resume()
-                
     }
 }
 

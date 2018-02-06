@@ -12,8 +12,8 @@ class FollowerViewController: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
     
-    // instantiate refresh control just when user refresh
-    lazy var refreshControll: UIRefreshControl = {
+    // lazy means instantiate refresh control just when user refresh
+    final lazy var refreshControll: UIRefreshControl = {
         let refresher = UIRefreshControl()
         refresher.addTarget(self, action: #selector(getAllFollowers), for: .valueChanged)
         return refresher
@@ -48,7 +48,7 @@ class FollowerViewController: UIViewController {
     }
     
     // these Button just for enhance twitter UI Navigation Bar
-    private func setupNavigationBarButtons(){
+    final private func setupNavigationBarButtons(){
         
         let twitterTitle = UIBarButtonItem(title: "Followers", style: .plain, target: nil, action: nil)
         navigationItem.leftBarButtonItem = twitterTitle
@@ -66,27 +66,34 @@ class FollowerViewController: UIViewController {
     }
     
     // added @objc because of #selector is Objective-c Function
-    @objc private func getAllFollowers() {
+    @objc final private func getAllFollowers() {
         guard let user = helper.getCredential() else { return }
         let parameter = "screen_name=\(user.userName)"
         guard let url = URL(string: "\(Constants.followers)?\(parameter)") else { return }
-        API.shared.getFollowers(url: url, bearer: user.bearer_token) { (followers) in
+        API.shared.getFollowers(url: url, bearer: user.bearer_token) { [weak self](followers) in
             if let followers = followers {
-                self.refreshControll.endRefreshing()
-                self.followers = followers
-                self.collectionView.reloadData()
+                self?.refreshControll.endRefreshing()
+                self?.followers = followers
+                self?.collectionView.reloadData()
             }
         }
     }
+
+    // grid setup here
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        collectionView?.collectionViewLayout.invalidateLayout()
+    }
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let identifier = segue.identifier, identifier == Constants.follower_profile_data {
-            if let vc = segue.destination as? ProfileViewController {
+            if let vc = segue.destination as? ProfileViewController
+            {
                 vc.follower = sender as? Follower
             }
         }
     }
-    
+
 }
 
 extension FollowerViewController: UICollectionViewDelegateFlowLayout {
@@ -113,6 +120,7 @@ extension FollowerViewController: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
         let selectedFollower = followers[indexPath.item]
         performSegue(withIdentifier: Constants.follower_profile_data, sender: selectedFollower)
     }
@@ -125,7 +133,6 @@ extension FollowerViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.FollowerCell, for: indexPath) as? FollowerCell {
             let follower = followers[indexPath.item]
             cell.setupCell(with: follower)
