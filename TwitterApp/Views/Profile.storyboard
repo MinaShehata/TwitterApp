@@ -13,16 +13,15 @@
         <!--Profile View Controller-->
         <scene sceneID="f0q-yS-Vy8">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="MRB-KA-Sit" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController automaticallyAdjustsScrollViewInsets="NO" id="mxN-4G-W3D" customClass="ProfileViewController" customModule="TwitterApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="h7S-oQ-PUH">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="d4V-3I-u0H">
-                                <rect key="frame" x="0.0" y="-60" width="375" height="727"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="vBa-OE-ytb">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="d4V-3I-u0H">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="vBa-OE-ytb" customClass="ProfileLayout" customModule="TwitterApp" customModuleProvider="target">
                                     <size key="itemSize" width="50" height="50"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -30,12 +29,18 @@
                                 </collectionViewFlowLayout>
                                 <cells/>
                             </collectionView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oF3-Kc-Q27" customClass="UIViewX" customModule="TwitterApp" customModuleProvider="target">
+                            <view contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="oF3-Kc-Q27" customClass="UIViewX" customModule="TwitterApp" customModuleProvider="target">
                                 <rect key="frame" x="16" y="36" width="32" height="32"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wpb-9W-hHm">
-                                        <rect key="frame" x="8" y="8" width="16" height="16"/>
+                                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wpb-9W-hHm" customClass="UIButtonX" customModule="TwitterApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="32" height="32"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                         <state key="normal" image="BackButton" backgroundImage="button:Wpb-9W-hHm:backgroundImage"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="16"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="backButton:" destination="mxN-4G-W3D" eventType="touchUpInside" id="4Gi-v9-Oyk"/>
                                         </connections>
@@ -44,12 +49,12 @@
                                 <color key="backgroundColor" red="0.14335605500000001" green="0.1862597466" blue="0.28200483320000003" alpha="0.66564105308219179" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="Wpb-9W-hHm" secondAttribute="trailing" constant="8" id="F0d-Ao-2aP"/>
+                                    <constraint firstItem="Wpb-9W-hHm" firstAttribute="top" secondItem="oF3-Kc-Q27" secondAttribute="top" id="FZa-iy-P8g"/>
                                     <constraint firstAttribute="width" constant="32" id="N6S-EY-jxl"/>
                                     <constraint firstAttribute="height" constant="32" id="Tic-O2-8dt"/>
-                                    <constraint firstAttribute="bottom" secondItem="Wpb-9W-hHm" secondAttribute="bottom" constant="8" id="V0r-OO-vNj"/>
-                                    <constraint firstItem="Wpb-9W-hHm" firstAttribute="leading" secondItem="oF3-Kc-Q27" secondAttribute="leading" constant="8" id="V0w-YS-Vbv"/>
-                                    <constraint firstItem="Wpb-9W-hHm" firstAttribute="top" secondItem="oF3-Kc-Q27" secondAttribute="top" constant="8" id="xqN-BV-EXH"/>
+                                    <constraint firstAttribute="trailing" secondItem="Wpb-9W-hHm" secondAttribute="trailing" id="YbO-Ar-a1U"/>
+                                    <constraint firstItem="Wpb-9W-hHm" firstAttribute="leading" secondItem="oF3-Kc-Q27" secondAttribute="leading" id="bsO-iL-Dl3"/>
+                                    <constraint firstAttribute="bottom" secondItem="Wpb-9W-hHm" secondAttribute="bottom" id="nFn-Yp-LC0"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -64,17 +69,19 @@
                             <constraint firstItem="d4V-3I-u0H" firstAttribute="bottom" secondItem="fAT-9t-5Bg" secondAttribute="bottom" id="RTw-Z7-UP9"/>
                             <constraint firstItem="d4V-3I-u0H" firstAttribute="trailing" secondItem="fAT-9t-5Bg" secondAttribute="trailing" id="aik-wm-Cv7"/>
                             <constraint firstItem="oF3-Kc-Q27" firstAttribute="top" secondItem="fAT-9t-5Bg" secondAttribute="top" constant="16" id="c5v-0X-JFd"/>
-                            <constraint firstItem="d4V-3I-u0H" firstAttribute="top" secondItem="h7S-oQ-PUH" secondAttribute="top" constant="-60" id="ch5-hr-usz"/>
+                            <constraint firstItem="d4V-3I-u0H" firstAttribute="top" secondItem="h7S-oQ-PUH" secondAttribute="top" id="ch5-hr-usz"/>
                             <constraint firstItem="oF3-Kc-Q27" firstAttribute="leading" secondItem="fAT-9t-5Bg" secondAttribute="leading" constant="16" id="j7h-io-NeV"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="fAT-9t-5Bg"/>
                     </view>
                     <connections>
                         <outlet property="collectionView" destination="d4V-3I-u0H" id="cGA-VR-HGF"/>
+                        <outlet property="profileLayout" destination="vBa-OE-ytb" id="a41-bd-3yv"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MRB-KA-Sit" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-343" y="-362"/>
+            <point key="canvasLocation" x="-346" y="-462"/>
         </scene>
     </scenes>
     <resources>

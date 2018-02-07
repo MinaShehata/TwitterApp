@@ -15,7 +15,6 @@ class FollowerCell: UICollectionViewCell {
     @IBOutlet weak var HandleLabel: UILabel!
     @IBOutlet weak var BioTextView: UITextView!
     
-    
     override func prepareForReuse() {
         super.prepareForReuse()
         profile_picture_URL.image = nil
@@ -24,8 +23,7 @@ class FollowerCell: UICollectionViewCell {
         BioTextView.text = nil
     }
     
-    
-    func setupCell(with follower: Follower) {
+    func setupCell(with follower: Follower, connected: Bool) {
         let userNameAttributedText = NSAttributedString(string: follower.userName, attributes: [NSAttributedStringKey.font : UIFont.boldSystemFont(ofSize: 14)])
         usernameLabel.attributedText = userNameAttributedText
         // setup handle
@@ -38,12 +36,26 @@ class FollowerCell: UICollectionViewCell {
             let attributedBio = NSMutableAttributedString(string: bio, attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14)])
             BioTextView.attributedText = attributedBio
         }
-        
+
         // setup Image
-        guard let profilePicURL = follower.profile_picture_URL, let url = URL(string: profilePicURL) else {
-            profile_picture_URL.image = #imageLiteral(resourceName: "Mina2017")
+        guard let profilePicURL = follower.profile_picture_URL else {
             return
         }
-        profile_picture_URL.loadProfileImageWithUrl(url: url)
+        
+        let imageStore = ImageStore()
+        if connected {
+            profile_picture_URL.loadProfileImageWithUrl(url: profilePicURL, completion: nil)
+            if let image = profile_picture_URL.image , let id = follower.profile_picture_id {
+                imageStore.deleteImage(forKey: id)
+                imageStore.setImage(image, forKey: id)
+                print("\n saved \n")
+            }
+        }
+        else {
+            if let id = follower.profile_picture_id, let image = imageStore.image(forKey: id) {
+                    profile_picture_URL.image = image
+            }
+        }
+        
     }
 }

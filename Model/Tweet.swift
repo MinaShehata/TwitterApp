@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import  SwiftyJSON
 
 //json response
 //{
@@ -16,17 +17,29 @@ import Foundation
     //"text": "RT @isararah_: طرزان بنفسه ما عاشرش كمية الحيوانات اللي انا عاشرتها.",
 //}
 
-class Tweet{
-  
-    private(set) var id: NSNumber
+class Tweet: NSObject, NSCoding {
+   
     weak var follower: Follower?
     var text: String
     var created_at: String
-    init(id: NSNumber, follower: Follower?, text: String, created_at: String) {
-        self.id = id
+    init?(dict: [String: JSON],follower: Follower?) {
+        guard let text = dict["text"]?.stringValue, let created_at = dict["created_at"]?.string else { return nil }
         self.follower = follower
         self.text = text
-        self.created_at = created_at
+        self.created_at = created_at.formatDateFromServer()
+    }
+    
+    func encode(with aCoder: NSCoder) {
+        aCoder.encode(follower, forKey: "follower")
+        aCoder.encode(text, forKey: "text")
+        aCoder.encode(created_at, forKey: "created_at")
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        follower = aDecoder.decodeObject(forKey: "follower") as! Follower?
+        text = aDecoder.decodeObject(forKey: "text") as! String
+        created_at = aDecoder.decodeObject(forKey: "created_at") as! String
+        super.init()
     }
 }
 

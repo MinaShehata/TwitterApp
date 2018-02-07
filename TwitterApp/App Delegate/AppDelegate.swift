@@ -13,12 +13,11 @@ import TwitterKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
-
+    var followerStore = FollowerStore()
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         TWTRTwitter.sharedInstance().start(withConsumerKey: Constants.consumerKey, consumerSecret: Constants.consumerSecret)
-       
         if let user = helper.getCredential(){
             //skip auth screen
             //go to main Screen
@@ -26,10 +25,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let vc = UIStoryboard(name: "Followers", bundle: nil).instantiateInitialViewController()!
             window?.rootViewController = vc
             
+            // very very important to save data make these reference......
+            followerStore = API.shared.followerStore
+//            tweetStore = API.shared.tweetStore
         }
-        
         return true
     }
+    
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
         return TWTRTwitter.sharedInstance().application(app, open: url, options: options)
@@ -44,6 +46,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidEnterBackground(_ application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+
+        let savedF = followerStore.save()
+        if savedF {
+            print("finaly saved Data")
+        }
+        else {
+            preconditionFailure("some thing worng")
+        }
+        
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {
@@ -56,6 +67,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+
+        let savedF = followerStore.save()
+        if savedF {
+            print("finaly saved Data")
+        }
+        else {
+            preconditionFailure("some thing worng")
+        }
     }
 
 

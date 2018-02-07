@@ -19,7 +19,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="456" height="96"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Mina2017" translatesAutoresizingMaskIntoConstraints="NO" id="BYm-j6-BCu" customClass="customImageView" customModule="TwitterApp" customModuleProvider="target">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="BYm-j6-BCu" customClass="customImageView" customModule="TwitterApp" customModuleProvider="target">
                         <rect key="frame" x="20" y="10" width="44" height="44"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="44" id="4jS-eW-XEr"/>
@@ -80,6 +80,7 @@
                     </view>
                 </subviews>
             </view>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="eNW-3j-6wn" firstAttribute="top" secondItem="qi4-Q8-NTH" secondAttribute="bottom" constant="1" id="0Eo-Ys-cHG"/>
                 <constraint firstAttribute="trailing" secondItem="8EA-QR-n9g" secondAttribute="trailing" id="CtY-L0-MrK"/>
@@ -106,7 +107,4 @@
             <point key="canvasLocation" x="18" y="130"/>
         </collectionViewCell>
     </objects>
-    <resources>
-        <image name="Mina2017" width="56" height="56"/>
-    </resources>
 </document>

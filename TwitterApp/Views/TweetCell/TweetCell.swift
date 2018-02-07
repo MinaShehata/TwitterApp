@@ -25,10 +25,25 @@ class TweetCell: UICollectionViewCell {
         created_atLabel.text = nil
     }
     
-    func setupTweet(with tweet: Tweet)
+    func setupTweet(with tweet: Tweet, connected: Bool)
     {
-        if let followerProfilePicture = tweet.follower?.profile_picture_URL, let url = URL(string: followerProfilePicture) {
-            profile_picture_imageView.loadProfileImageWithUrl(url: url)
+        if connected {
+        if let followerProfilePicture = tweet.follower?.profile_picture_URL {
+                profile_picture_imageView.loadProfileImageWithUrl(url: followerProfilePicture, completion: nil)
+                let imageStore = ImageStore()
+                if let image = profile_picture_imageView.image, let id = tweet.follower?.profile_picture_id {
+                    imageStore.deleteImage(forKey: id) // delete old
+                    imageStore.setImage(image, forKey: id) // set new ........
+                    print("\n\n saved")
+                }
+            }
+        }
+        else {
+            let imageStore = ImageStore()
+            if let id = tweet.follower?.profile_picture_id, let image = imageStore.image(forKey: id) {
+                profile_picture_imageView.image = image
+            }
+            
         }
         let textViewAttributed = NSAttributedString(string: tweet.text, attributes: [NSAttributedStringKey.font : UIFont.systemFont(ofSize: 14)])
         tweetTextView.attributedText = textViewAttributed

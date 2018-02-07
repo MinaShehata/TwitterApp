@@ -14,6 +14,7 @@ class LoginViewController: UIViewController {
         didSet
         {
             // for using tint color didn't work from interface builder xcode bug.
+            twitterLogoImageView.tintColor = #colorLiteral(red: 0.2514260113, green: 0.4632044435, blue: 0.6128600836, alpha: 1)
             twitterLogoImageView.image = #imageLiteral(resourceName: "Tweeter logo")
         }
     }
@@ -28,7 +29,8 @@ class LoginViewController: UIViewController {
     }
     
     final private func setupLoginButton() {
-        API.shared.signedIn(view: view) { (user) in
+        AuthController.signedIn(view: view) { (user) in
+            print(user)
             helper.saveCredential(bearer_token: user.bearer_token, username: user.userName)
         }
     }
