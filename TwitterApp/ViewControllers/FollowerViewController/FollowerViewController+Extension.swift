@@ -72,7 +72,7 @@ extension FollowerViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.FollowerCell, for: indexPath) as? FollowerCell {
             let follower = followers[indexPath.item]
-            cell.setupCell(with: follower, connected: connected())
+            cell.setupCell(with: follower)
             return cell
         }
         return UICollectionViewCell()

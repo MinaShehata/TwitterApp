@@ -42,7 +42,7 @@ extension ProfileViewController: UICollectionViewDataSource{
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.TweetCell, for: indexPath) as? TweetCell {
             if let follower = follower, let tweets = follower.tweets {
                 let tweet = tweets[indexPath.item]
-                cell.setupTweet(with: tweet, connected: connected())
+                cell.setupTweet(with: tweet)
                 return cell
             }
         }
@@ -51,7 +51,7 @@ extension ProfileViewController: UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         if kind == UICollectionElementKindSectionHeader {
             if let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: Constants.ProfileHeader, for: indexPath) as? ProfileHeader,let follower = follower {
-                header.setupHeader(with: follower, connected: connected())
+                header.setupHeader(with: follower)
             return header
             }
         }

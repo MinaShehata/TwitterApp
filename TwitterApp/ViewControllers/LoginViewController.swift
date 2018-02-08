@@ -55,11 +55,16 @@ class LoginViewController: UIViewController {
     @IBAction func ChangeLanguage(_ sender: UISegmentedControl) {
         if  Language.currentLanguage() == "ar"
         {
+            twitterLogoImageView.tintColor = #colorLiteral(red: 0.1365008056, green: 0.276440084, blue: 0.360370636, alpha: 1)
+            langSegmentControl.selectedSegmentIndex = 0
             Language.setAppLanguage(lang: "en-US")
             UIView.appearance().semanticContentAttribute = .forceLeftToRight
         }
         else
         {
+            langSegmentControl.selectedSegmentIndex = 1
+            twitterLogoImageView.tintColor = #colorLiteral(red: 0.3219999969, green: 0.5429999828, blue: 0.4979999959, alpha: 1)
+
             Language.setAppLanguage(lang: "ar")
             UIView.appearance().semanticContentAttribute = .forceRightToLeft
         }

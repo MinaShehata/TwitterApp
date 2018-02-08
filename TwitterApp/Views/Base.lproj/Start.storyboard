@@ -9,11 +9,6 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
-    <customFonts key="customFonts">
-        <array key="MedulaOne-Regular.ttf">
-            <string>MedulaOne-Regular</string>
-        </array>
-    </customFonts>
     <scenes>
         <!--Login View Controller-->
         <scene sceneID="uFZ-I6-LUZ">
@@ -24,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="nC6-i4-yFE">
-                                <rect key="frame" x="113" y="70" width="149" height="36"/>
+                                <rect key="frame" x="102" y="70" width="172" height="36"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lx1-r1-3c8">
                                         <rect key="frame" x="0.0" y="0.0" width="44" height="36"/>
@@ -34,8 +29,8 @@
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TWITTER" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CXw-F9-OOr">
-                                        <rect key="frame" x="64" y="0.0" width="85" height="36"/>
-                                        <fontDescription key="fontDescription" name="MedulaOne-Regular" family="Medula One" pointSize="40"/>
+                                        <rect key="frame" x="64" y="0.0" width="108" height="36"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>

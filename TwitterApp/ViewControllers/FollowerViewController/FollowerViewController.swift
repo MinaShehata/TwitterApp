@@ -14,8 +14,7 @@ class FollowerViewController: UIViewController {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
-    // refreence for persistance
-    //////////////
+    
     // lazy means instantiate refresh control just when user refresh
     final lazy var refreshControll: UIRefreshControl = {
         let refresher = UIRefreshControl()
@@ -28,8 +27,7 @@ class FollowerViewController: UIViewController {
     var followers = [Follower]()
     override func viewDidLoad() {
         super.viewDidLoad()
-       // start network notifier............
-        let _ = NetworkAvailability.checkNetworkConnection()
+        
         ///////////////////////////
         // setupCollectionView
         collectionView.delegate = self
@@ -39,30 +37,32 @@ class FollowerViewController: UIViewController {
         collectionView.contentInset = UIEdgeInsets(top: 5, left: 0, bottom: 0, right: 0)
         setupNavigationBarButtons()
         
-        
-    }
-
-    func connected() -> Bool{
-        return NetworkAvailability.checkNetworkConnection()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        self.navigationController?.setNavigationBarHidden(false, animated: true)
+        // get followers
         getAllFollowers()
 
     }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
+    }
    
+    // check network status
+    func loadOfflineData() {
+        refreshControll.endRefreshing()
+        followers = followerStore.followers
+        collectionView.reloadData()
+    }
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: true)
-        NetworkAvailability.stopNotifier()
     }
     
     // these Button just for enhance twitter UI Navigation Bar
     final private func setupNavigationBarButtons(){
-        
-        let signOutButton = UIBarButtonItem(title: "SignOut", style: .plain, target: self, action: #selector(SignOutUser))
+        let signout = NSLocalizedString("SignOut", comment: "sign out button Name")
+        let signOutButton = UIBarButtonItem(title: signout, style: .plain, target: self, action: #selector(SignOutUser))
         
         navigationItem.leftBarButtonItem = signOutButton
         
@@ -83,37 +83,37 @@ class FollowerViewController: UIViewController {
     }
     
     // pagination 10 per page // some variables
-    var current_cursor = -1
-    var next_cursor = 1
+    var next_cursor = -1
     
     // added @objc because of #selector is Objective-c Function
     
     @objc final private func getAllFollowers() {
-        if connected() {
-            next_cursor = -1
-            self.refreshControll.endRefreshing()
-            API.shared.followers(completion: { (followers, next_cursor) in
-                if let followers = followers {
-                    self.followers = followers
-                    self.collectionView.reloadData()
-                    self.next_cursor = next_cursor
-                }
-            })
-        }
-        else {
-            self.refreshControll.endRefreshing()
-            followers = followerStore.followers
-            collectionView.reloadData()
-        }
+        self.refreshControll.endRefreshing()
+        API.shared.followers(completion: { [weak self] (followers, next_cursor, error)  in
+            if error != nil {
+                self?.loadOfflineData()
+                return
+            }
+            if let followers = followers {
+                self?.followers = followers
+                self?.collectionView.reloadData()
+                self?.next_cursor = next_cursor
+            }
+        })
     }
     
     // load on scrolling.....
     func load_more() { //load  another 10 users....
-        API.shared.followers(current_cursor: next_cursor) { (followers, next_cursor) in
+        guard next_cursor != 0 else { return }
+        API.shared.followers(current_cursor: next_cursor) { [weak self](followers, next_cursor, error) in
+            if error != nil {
+//                print(error?.localizedDescription)
+                return
+            }
             if let followers = followers {
-                self.followers.append(contentsOf: followers)
-                self.collectionView.reloadData()
-                self.next_cursor = next_cursor
+                self?.followers.append(contentsOf: followers)
+                self?.collectionView.reloadData()
+                self?.next_cursor = next_cursor
             }
         }
     }

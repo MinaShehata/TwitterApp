@@ -23,7 +23,7 @@ class FollowerCell: UICollectionViewCell {
         BioTextView.text = nil
     }
     
-    func setupCell(with follower: Follower, connected: Bool) {
+    func setupCell(with follower: Follower) {
         let userNameAttributedText = NSAttributedString(string: follower.userName, attributes: [NSAttributedStringKey.font : UIFont.boldSystemFont(ofSize: 14)])
         usernameLabel.attributedText = userNameAttributedText
         // setup handle
@@ -41,20 +41,23 @@ class FollowerCell: UICollectionViewCell {
         guard let profilePicURL = follower.profile_picture_URL else {
             return
         }
-        
-        let imageStore = ImageStore()
-        if connected {
-            profile_picture_URL.loadProfileImageWithUrl(url: profilePicURL, completion: nil)
-            if let image = profile_picture_URL.image , let id = follower.profile_picture_id {
-                imageStore.deleteImage(forKey: id)
-                imageStore.setImage(image, forKey: id)
+        profile_picture_URL.loadProfileImageWithUrl(url: profilePicURL, completion: {
+            if $0 {
+                let imageStore = ImageStore()
+                if let image = self.profile_picture_URL.image , let id = follower.profile_picture_id {
+                    imageStore.setImage(image, forKey: id)
+                }
             }
-        }
-        else {
-            if let id = follower.profile_picture_id, let image = imageStore.image(forKey: id) {
-                    profile_picture_URL.image = image
+            else {
+                let imageStore = ImageStore()
+                if let id = follower.profile_picture_id, let image = imageStore.image(forKey: id) {
+                    DispatchQueue.main.async {
+                        self.profile_picture_URL.image = image
+                    }
+                }
             }
-        }
-        
+        })
+
     }
+
 }

@@ -19,7 +19,7 @@ final class API
     var followerStore = FollowerStore()
     
     // page defaults to 1
-    func followers(current_cursor: Int = -1, completion: @escaping (_ followers: [Follower]?, _ previous_cursor: Int) -> ()) {
+    func followers(current_cursor: Int = -1, completion: @escaping (_ followers: [Follower]?, _ previous_cursor: Int, _ error :Error?) -> ()) {
         let url = Constants.followers
         if let user = helper.getCredential() {
             let parameter: [String: String] = ["screen_name": user.userName, "cursor": "\(current_cursor)", "count": "10"]
@@ -27,20 +27,21 @@ final class API
             Loader.getAllFollowersFromServer(cursor: current_cursor, withURL: url, parameter: parameter, token: token, completion: { (followers, success, error, next_cursor) in
                 if let error = error {
                     print(error.localizedDescription)
-                    completion(nil, current_cursor)
+                    completion(nil, 0, error)
                     return
                 }
                 if let fs = followers {
                     self.followerStore.append(with: fs) // save in background thread
+                    let _ = self.followerStore.save()
                     DispatchQueue.main.async {
-                        completion(fs, next_cursor)
+                        completion(fs, next_cursor, nil)
                     }
                 }
             })
         }
     }
     
-    func tweets(of follower: Follower,completion: @escaping ([Tweet]?) -> ()) {
+    func tweets(of follower: Follower,completion: @escaping ([Tweet]?, _ error: Error?) -> ()) {
         let url = Constants.tweets
         if let user = helper.getCredential() {
             let parameter = ["q": "@\(follower.handle)", "count": "10"] // last 10 tweets........
@@ -48,12 +49,16 @@ final class API
             Loader.getLastTenTweetForFollower(follower, withURL: url, parameter: parameter, token: token, completion: { (tweets, success, error) in
                 if let error = error {
                     print(error.localizedDescription)
+                    completion(nil, error)
                     return
                 }
                 if let tw = tweets {
-                    self.followerStore.setTweets(of: follower, with: tw) // save in background thread
+                    
+                    self.followerStore.setTweets(of: follower, with: tw)
+                    let _ = self.followerStore.save()
+                    // save in background thread
                     DispatchQueue.main.async {
-                        completion(tw)
+                        completion(tw, nil)
                     }
                 }
             })
