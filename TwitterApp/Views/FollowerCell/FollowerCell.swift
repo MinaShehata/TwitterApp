@@ -53,6 +53,7 @@ class FollowerCell: UICollectionViewCell {
                 if let id = follower.profile_picture_id, let image = imageStore.image(forKey: id) {
                     DispatchQueue.main.async {
                         self.profile_picture_URL.image = image
+
                     }
                 }
             }

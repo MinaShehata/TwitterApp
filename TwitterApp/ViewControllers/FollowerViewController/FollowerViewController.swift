@@ -104,7 +104,7 @@ class FollowerViewController: UIViewController {
     
     // load on scrolling.....
     func load_more() { //load  another 10 users....
-        guard next_cursor != 0 else { return }
+        guard next_cursor > 0 else { return }
         API.shared.followers(current_cursor: next_cursor) { [weak self](followers, next_cursor, error) in
             if error != nil {
 //                print(error?.localizedDescription)

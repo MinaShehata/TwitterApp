@@ -27,7 +27,7 @@ final class API
             Loader.getAllFollowersFromServer(cursor: current_cursor, withURL: url, parameter: parameter, token: token, completion: { (followers, success, error, next_cursor) in
                 if let error = error {
                     print(error.localizedDescription)
-                    completion(nil, 0, error)
+                    completion(nil, next_cursor, error)
                     return
                 }
                 if let fs = followers {

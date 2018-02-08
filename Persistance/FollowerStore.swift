@@ -27,7 +27,7 @@ class FollowerStore {
     }
     // helper Function......
     func append(with followers: [Follower]) {
-        self.followers = followers
+        self.followers += followers
     }
     
     func getTweets(of follower: Follower) -> [Tweet]? {

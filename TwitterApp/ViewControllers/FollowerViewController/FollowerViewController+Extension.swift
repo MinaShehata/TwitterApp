@@ -35,12 +35,12 @@ extension FollowerViewController: UICollectionViewDelegateFlowLayout {
         
         // if has bio or not
         if let bio = follower.bio, follower.bio != "" {
-            let estimatedFrame = helper.estimateFrameForText(text: bio, size: aproximateWidthOfBioTextView)
-            return CGSize(width: view.frame.width, height: estimatedFrame.height + 17 + 42)
+            let estimatedFrame = helper.estimateFrameForText(text: bio, size: aproximateWidthOfBioTextView).height + 10
+            return CGSize(width: view.frame.width, height: estimatedFrame + 50)
             
         }
         
-        return CGSize(width: view.frame.width, height: 59)
+        return CGSize(width: view.frame.width, height: 50)
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -60,8 +60,6 @@ extension FollowerViewController: UICollectionViewDelegateFlowLayout {
             load_more()
         }
     }
-    
-    
     
 }
 
