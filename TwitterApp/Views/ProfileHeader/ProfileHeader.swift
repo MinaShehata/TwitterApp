@@ -16,7 +16,6 @@ class ProfileHeader: UICollectionReusableView {
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var handleLabel: UILabel!
     
-//    @IBOutlet weak var bioTextView: UITextView!
     @IBOutlet weak var followingButton: UIButtonX! {
         didSet {
             followingButton.setImage(#imageLiteral(resourceName: "FollowerCheckButton"), for: .normal)
@@ -39,7 +38,6 @@ class ProfileHeader: UICollectionReusableView {
                         if let image = self?.profile_banner_imageView.image , let id = follower.banner_picture_id {
                             imageStore.deleteImage(forKey: id) // delete old ......
                             imageStore.setImage(image, forKey: id) // set net ........
-                            print("\n saved \n")
                         }
                     }
                 })
@@ -57,7 +55,6 @@ class ProfileHeader: UICollectionReusableView {
                         if let image = self?.profile_picture_imageView.image , let id = follower.profile_picture_id {
                             imageStore.deleteImage(forKey: id)
                             imageStore.setImage(image, forKey: id)
-                            print("\n saved \n")
                         }
                     }
                 })

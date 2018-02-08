@@ -22,6 +22,13 @@ class helper: NSObject {
         
         restartApp()
     }
+    class func removeCredential() {
+        let def = UserDefaults.standard
+        def.removeObject(forKey: "username")
+        def.removeObject(forKey: "bearer_token")
+        def.synchronize()
+        restartApp()
+    }
     
     // get user as save it
     class func getCredential() -> User? {

@@ -48,7 +48,6 @@ class FollowerCell: UICollectionViewCell {
             if let image = profile_picture_URL.image , let id = follower.profile_picture_id {
                 imageStore.deleteImage(forKey: id)
                 imageStore.setImage(image, forKey: id)
-                print("\n saved \n")
             }
         }
         else {

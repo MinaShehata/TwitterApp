@@ -19,7 +19,11 @@ class LoginViewController: UIViewController {
         }
     }
     
-    @IBOutlet weak private var twitterTitleLabel: UILabel!
+    @IBOutlet weak private var twitterTitleLabel: UILabel! {
+        didSet {
+            twitterTitleLabel.text = NSLocalizedString("Twitter", comment: "change Logo Name")
+        }
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -46,5 +50,27 @@ class LoginViewController: UIViewController {
         
     }
     
+    @IBOutlet weak var langSegmentControl: UISegmentedControl!
+    
+    @IBAction func ChangeLanguage(_ sender: UISegmentedControl) {
+        if  Language.currentLanguage() == "ar"
+        {
+            Language.setAppLanguage(lang: "en-US")
+            UIView.appearance().semanticContentAttribute = .forceLeftToRight
+        }
+        else
+        {
+            Language.setAppLanguage(lang: "ar")
+            UIView.appearance().semanticContentAttribute = .forceRightToLeft
+        }
+        
+        let mainWindow = (UIApplication.shared.delegate as? AppDelegate)?.window
+        
+        let sb = UIStoryboard(name: "Start", bundle: nil)
+        mainWindow?.rootViewController = sb.instantiateViewController(withIdentifier: "rootVC")
+        
+        UIView.transition(with: mainWindow!, duration: 0.5, options: [.transitionFlipFromLeft], animations: nil, completion: nil)
+        
+    }
 }
 

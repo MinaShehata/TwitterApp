@@ -18,20 +18,22 @@ final class API
     // reference for persistance
     var followerStore = FollowerStore()
     
-    func followers(completion: @escaping ([Follower]?) -> ()) {
+    // page defaults to 1
+    func followers(current_cursor: Int = -1, completion: @escaping (_ followers: [Follower]?, _ previous_cursor: Int) -> ()) {
         let url = Constants.followers
         if let user = helper.getCredential() {
-            let parameter = ["screen_name": user.userName]
+            let parameter: [String: String] = ["screen_name": user.userName, "cursor": "\(current_cursor)", "count": "10"]
             let token = ["Authorization" :"Bearer " + user.bearer_token]
-            Loader.getAllFollowersFromServer(withURL: url, parameter: parameter, token: token, completion: { (followers, success, error) in
+            Loader.getAllFollowersFromServer(cursor: current_cursor, withURL: url, parameter: parameter, token: token, completion: { (followers, success, error, next_cursor) in
                 if let error = error {
                     print(error.localizedDescription)
+                    completion(nil, current_cursor)
                     return
                 }
                 if let fs = followers {
                     self.followerStore.append(with: fs) // save in background thread
                     DispatchQueue.main.async {
-                        completion(fs)
+                        completion(fs, next_cursor)
                     }
                 }
             })

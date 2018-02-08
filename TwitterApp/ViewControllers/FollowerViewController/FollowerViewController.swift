@@ -20,6 +20,7 @@ class FollowerViewController: UIViewController {
     final lazy var refreshControll: UIRefreshControl = {
         let refresher = UIRefreshControl()
         refresher.addTarget(self, action: #selector(getAllFollowers), for: .valueChanged)
+        refresher.tintColor = UIColor.blue
         return refresher
     }()
     var followerStore = FollowerStore()
@@ -28,7 +29,7 @@ class FollowerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
        // start network notifier............
-        NetworkAvailability.startNotifier()
+        let _ = NetworkAvailability.checkNetworkConnection()
         ///////////////////////////
         // setupCollectionView
         collectionView.delegate = self
@@ -61,8 +62,9 @@ class FollowerViewController: UIViewController {
     // these Button just for enhance twitter UI Navigation Bar
     final private func setupNavigationBarButtons(){
         
-        let twitterTitle = UIBarButtonItem(title: "Followers", style: .plain, target: nil, action: nil)
-        navigationItem.leftBarButtonItem = twitterTitle
+        let signOutButton = UIBarButtonItem(title: "SignOut", style: .plain, target: self, action: #selector(SignOutUser))
+        
+        navigationItem.leftBarButtonItem = signOutButton
         
         let composeTweet = UIBarButtonItem(image: #imageLiteral(resourceName: "Compose Tweet"), style: .plain, target: nil, action: nil)
          let searchTweet = UIBarButtonItem(image: #imageLiteral(resourceName: "Search"), style: .plain, target: nil, action: nil)
@@ -76,14 +78,25 @@ class FollowerViewController: UIViewController {
         navigationItem.titleView = view
     }
     
+    @objc private func SignOutUser() {
+        helper.removeCredential()
+    }
+    
+    // pagination 10 per page // some variables
+    var current_cursor = -1
+    var next_cursor = 1
+    
     // added @objc because of #selector is Objective-c Function
+    
     @objc final private func getAllFollowers() {
         if connected() {
-            API.shared.followers(completion: {
-                if let followers = $0 {
-                    self.refreshControll.endRefreshing()
+            next_cursor = -1
+            self.refreshControll.endRefreshing()
+            API.shared.followers(completion: { (followers, next_cursor) in
+                if let followers = followers {
                     self.followers = followers
                     self.collectionView.reloadData()
+                    self.next_cursor = next_cursor
                 }
             })
         }
@@ -93,7 +106,19 @@ class FollowerViewController: UIViewController {
             collectionView.reloadData()
         }
     }
-
+    
+    // load on scrolling.....
+    func load_more() { //load  another 10 users....
+        API.shared.followers(current_cursor: next_cursor) { (followers, next_cursor) in
+            if let followers = followers {
+                self.followers.append(contentsOf: followers)
+                self.collectionView.reloadData()
+                self.next_cursor = next_cursor
+            }
+        }
+    }
+    
+    
     // grid setup here
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)

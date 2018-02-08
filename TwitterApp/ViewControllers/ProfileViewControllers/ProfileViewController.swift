@@ -30,7 +30,7 @@ class ProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        NetworkAvailability.startNotifier()
+        let _ = NetworkAvailability.checkNetworkConnection()
         // CollectionView Setup.....
         collectionView.delegate = self
         collectionView.dataSource = self

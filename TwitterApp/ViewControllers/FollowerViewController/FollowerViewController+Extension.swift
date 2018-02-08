@@ -18,18 +18,26 @@ extension FollowerViewController: UICollectionViewDelegateFlowLayout {
         return 0
     }
     
+    func compare(_ width: CGFloat, and height: CGFloat) -> Bool {
+        
+        if width < height {
+//            in portrait
+            return true
+        }
+        else { return false } // in landscape
+        
+    }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
         let follower = followers[indexPath.item]
         let aproximateWidthOfBioTextView = view.frame.width - 16 - 40 - 5 - 16 - 10
         
         // if has bio or not
-        let size = CGSize(width: aproximateWidthOfBioTextView, height: 1000)
-        
-        let attribute = [NSAttributedStringKey.font : UIFont.systemFont(ofSize: 14)]
-        
         if let bio = follower.bio, follower.bio != "" {
-            let estimatedFrame = NSString(string: bio).boundingRect(with: size, options: .usesLineFragmentOrigin, attributes: attribute, context: nil)
+            let estimatedFrame = helper.estimateFrameForText(text: bio, size: aproximateWidthOfBioTextView)
             return CGSize(width: view.frame.width, height: estimatedFrame.height + 17 + 42)
+            
         }
         
         return CGSize(width: view.frame.width, height: 59)
@@ -40,6 +48,20 @@ extension FollowerViewController: UICollectionViewDelegateFlowLayout {
         let selectedFollower = followers[indexPath.item]
         performSegue(withIdentifier: Constants.follower_profile_data, sender: selectedFollower)
     }
+    
+    
+    
+    
+    
+    /// pagination load more.......
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        let followers_count = followers.count
+        if indexPath.item == followers_count - 1 {
+            load_more()
+        }
+    }
+    
+    
     
 }
 

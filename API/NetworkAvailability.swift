@@ -13,8 +13,15 @@ class NetworkAvailability
 {
     static var connected = false
     static let reachability = Reachability()!
+
     static func checkNetworkConnection() -> Bool
     {
+
+        do {
+            try reachability.startNotifier()
+        }
+        catch { print(error.localizedDescription) }
+        
         reachability.whenReachable = { reachability in
             if reachability.connection == .wifi {
                 print("Reachable via WiFi")
@@ -34,13 +41,7 @@ class NetworkAvailability
         return connected
     }
     
-    static func startNotifier() {
-        do {
-            try NetworkAvailability.reachability.startNotifier()
-        }
-        catch { print(error.localizedDescription) }
-    }
     static func stopNotifier() {
-        NetworkAvailability.reachability.stopNotifier()
+        reachability.stopNotifier()
     }
 }

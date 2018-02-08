@@ -18,7 +18,7 @@
         <!--Login View Controller-->
         <scene sceneID="uFZ-I6-LUZ">
             <objects>
-                <viewController id="5Zl-S6-uta" customClass="LoginViewController" customModule="TwitterApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="rootVC" id="5Zl-S6-uta" customClass="LoginViewController" customModule="TwitterApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="d1v-vB-Nzf">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -41,23 +41,39 @@
                                     </label>
                                 </subviews>
                             </stackView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="5Ep-YH-50o">
+                                <rect key="frame" x="129" y="627" width="117" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="OM9-Ci-Bbq"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="English"/>
+                                    <segment title="عربي"/>
+                                </segments>
+                                <connections>
+                                    <action selector="ChangeLanguage:" destination="5Zl-S6-uta" eventType="valueChanged" id="eZo-3d-Edc"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="nC6-i4-yFE" firstAttribute="top" secondItem="hK9-SR-vVb" secondAttribute="top" constant="50" id="RAe-hw-PPT"/>
                             <constraint firstItem="nC6-i4-yFE" firstAttribute="centerX" secondItem="d1v-vB-Nzf" secondAttribute="centerX" id="Rjb-9l-QHz"/>
+                            <constraint firstItem="5Ep-YH-50o" firstAttribute="centerX" secondItem="d1v-vB-Nzf" secondAttribute="centerX" id="Xy1-oS-SFr"/>
+                            <constraint firstItem="hK9-SR-vVb" firstAttribute="bottom" secondItem="5Ep-YH-50o" secondAttribute="bottom" constant="10" id="eYo-w5-pR3"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="hK9-SR-vVb"/>
                     </view>
                     <connections>
+                        <outlet property="langSegmentControl" destination="5Ep-YH-50o" id="wIQ-7Y-OIZ"/>
                         <outlet property="twitterLogoImageView" destination="lx1-r1-3c8" id="uSM-aj-khw"/>
                         <outlet property="twitterTitleLabel" destination="CXw-F9-OOr" id="tKR-Fw-3cb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DKx-wy-tbg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1055" y="-667"/>
+            <point key="canvasLocation" x="-985" y="-719"/>
         </scene>
     </scenes>
 </document>

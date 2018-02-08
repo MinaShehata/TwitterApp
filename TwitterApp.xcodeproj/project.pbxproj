@@ -18,11 +18,13 @@
 		2F246640202B339600101478 /* NetworkAvailability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F24663F202B339600101478 /* NetworkAvailability.swift */; };
 		2F246642202B3D7300101478 /* AuthController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F246641202B3D7300101478 /* AuthController.swift */; };
 		2F246644202B4BC700101478 /* Loader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F246643202B4BC700101478 /* Loader.swift */; };
-		2F36543420274CB200BD0979 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F36543320274CB200BD0979 /* Profile.storyboard */; };
 		2F365436202761F500BD0979 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F365435202761F500BD0979 /* ProfileViewController.swift */; };
 		2F365439202795D600BD0979 /* UIButtonX.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F365437202795D500BD0979 /* UIButtonX.swift */; };
 		2F36543A202795D600BD0979 /* UIViewX.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F365438202795D600BD0979 /* UIViewX.swift */; };
 		2F36543C2027F4A700BD0979 /* Tweet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F36543B2027F4A700BD0979 /* Tweet.swift */; };
+		2F538978202BDFDE0035B68D /* Followers.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F53897A202BDFDE0035B68D /* Followers.storyboard */; };
+		2F53897C202BDFF50035B68D /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F53897E202BDFF50035B68D /* Profile.storyboard */; };
+		2F538982202BE0430035B68D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2F538984202BE0430035B68D /* Localizable.strings */; };
 		2F9EEBD7202637150093FBDA /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9EEBD6202637150093FBDA /* API.swift */; };
 		2F9EEBDB202638240093FBDA /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9EEBDA202638240093FBDA /* User.swift */; };
 		2F9EEBE02026394D0093FBDA /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9EEBDF2026394D0093FBDA /* Constants.swift */; };
@@ -30,7 +32,6 @@
 		2F9EEBE7202639C90093FBDA /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F9EEBE6202639C90093FBDA /* Twitter.framework */; };
 		2F9EEBEA202640E30093FBDA /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9EEBE9202640E30093FBDA /* String+Extension.swift */; };
 		2F9EEBEE20264AED0093FBDA /* Start.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F9EEBEC20264AED0093FBDA /* Start.storyboard */; };
-		2F9EEBF520265E5D0093FBDA /* Followers.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F9EEBF420265E5D0093FBDA /* Followers.storyboard */; };
 		2F9EEBF7202660240093FBDA /* MedulaOne-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2F9EEBF6202660230093FBDA /* MedulaOne-Regular.ttf */; };
 		2F9EEBF9202660490093FBDA /* Kharabeesh Font.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2F9EEBF8202660490093FBDA /* Kharabeesh Font.ttf */; };
 		2F9EEBFB202667F50093FBDA /* helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9EEBFA202667F50093FBDA /* helper.swift */; };
@@ -42,6 +43,8 @@
 		2FA5CB762026183B00F1FA59 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA5CB752026183B00F1FA59 /* AppDelegate.swift */; };
 		2FA5CB782026183B00F1FA59 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA5CB772026183B00F1FA59 /* LoginViewController.swift */; };
 		2FA5CB7D2026183B00F1FA59 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2FA5CB7C2026183B00F1FA59 /* Assets.xcassets */; };
+		2FC1A052202BAFB80052D03B /* Localizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC1A050202BAFB70052D03B /* Localizer.swift */; };
+		2FC1A053202BAFB80052D03B /* Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC1A051202BAFB80052D03B /* Language.swift */; };
 		2FCA8B3820286DEC007912E8 /* TweetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCA8B3620286DEC007912E8 /* TweetCell.swift */; };
 		2FCA8B3920286DEC007912E8 /* TweetCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2FCA8B3720286DEC007912E8 /* TweetCell.xib */; };
 		2FD6D77C2026D7B700499C95 /* customImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD6D77B2026D7B700499C95 /* customImageView.swift */; };
@@ -60,11 +63,16 @@
 		2F24663F202B339600101478 /* NetworkAvailability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkAvailability.swift; sourceTree = "<group>"; };
 		2F246641202B3D7300101478 /* AuthController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthController.swift; sourceTree = "<group>"; };
 		2F246643202B4BC700101478 /* Loader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loader.swift; sourceTree = "<group>"; };
-		2F36543320274CB200BD0979 /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		2F365435202761F500BD0979 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		2F365437202795D500BD0979 /* UIButtonX.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIButtonX.swift; sourceTree = "<group>"; };
 		2F365438202795D600BD0979 /* UIViewX.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewX.swift; sourceTree = "<group>"; };
 		2F36543B2027F4A700BD0979 /* Tweet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tweet.swift; sourceTree = "<group>"; };
+		2F538979202BDFDE0035B68D /* ar */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = ar; path = ar.lproj/Followers.storyboard; sourceTree = "<group>"; };
+		2F53897B202BDFE10035B68D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Followers.storyboard; sourceTree = "<group>"; };
+		2F53897D202BDFF50035B68D /* ar */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = ar; path = ar.lproj/Profile.storyboard; sourceTree = "<group>"; };
+		2F53897F202BDFF60035B68D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Profile.storyboard; sourceTree = "<group>"; };
+		2F538983202BE0430035B68D /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/Localizable.strings; sourceTree = "<group>"; };
+		2F538985202BE0450035B68D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		2F9EEBD6202637150093FBDA /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		2F9EEBDA202638240093FBDA /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		2F9EEBDF2026394D0093FBDA /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -72,7 +80,6 @@
 		2F9EEBE6202639C90093FBDA /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
 		2F9EEBE9202640E30093FBDA /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		2F9EEBED20264AED0093FBDA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Start.storyboard; sourceTree = "<group>"; };
-		2F9EEBF420265E5D0093FBDA /* Followers.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Followers.storyboard; sourceTree = "<group>"; };
 		2F9EEBF6202660230093FBDA /* MedulaOne-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MedulaOne-Regular.ttf"; sourceTree = "<group>"; };
 		2F9EEBF8202660490093FBDA /* Kharabeesh Font.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Kharabeesh Font.ttf"; sourceTree = "<group>"; };
 		2F9EEBFA202667F50093FBDA /* helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = helper.swift; sourceTree = "<group>"; };
@@ -86,6 +93,10 @@
 		2FA5CB772026183B00F1FA59 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		2FA5CB7C2026183B00F1FA59 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2FA5CB812026183B00F1FA59 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2FC1A050202BAFB70052D03B /* Localizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Localizer.swift; sourceTree = "<group>"; };
+		2FC1A051202BAFB80052D03B /* Language.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Language.swift; sourceTree = "<group>"; };
+		2FC1A054202BAFD30052D03B /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/Start.strings; sourceTree = "<group>"; };
+		2FC1A055202BAFD40052D03B /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		2FCA8B3620286DEC007912E8 /* TweetCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetCell.swift; sourceTree = "<group>"; };
 		2FCA8B3720286DEC007912E8 /* TweetCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TweetCell.xib; sourceTree = "<group>"; };
 		2FD6D77B2026D7B700499C95 /* customImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = customImageView.swift; sourceTree = "<group>"; };
@@ -224,8 +235,8 @@
 			isa = PBXGroup;
 			children = (
 				2F9EEBEC20264AED0093FBDA /* Start.storyboard */,
-				2F9EEBF420265E5D0093FBDA /* Followers.storyboard */,
-				2F36543320274CB200BD0979 /* Profile.storyboard */,
+				2F53897A202BDFDE0035B68D /* Followers.storyboard */,
+				2F53897E202BDFF50035B68D /* Profile.storyboard */,
 				2F1AD6282029943600882B7E /* ProfileHeader */,
 				2F36543D20281DAD00BD0979 /* TweetCell */,
 				2F9EEC02202687660093FBDA /* FollowerCell */,
@@ -255,10 +266,11 @@
 		2FA5CB692026183B00F1FA59 = {
 			isa = PBXGroup;
 			children = (
+				2FC1A04F202BAF860052D03B /* Localization */,
 				2F9EEBE8202640CA0093FBDA /* Extension */,
 				2F9EEBD92026373A0093FBDA /* Model */,
 				2F246638202A62A700101478 /* Persistance */,
-				2FD6D77D2026EB9F00499C95 /* ViewModel */,
+				2FD6D77D2026EB9F00499C95 /* ViewModel(imageCashingForView) */,
 				2F9EEBD82026372D0093FBDA /* API */,
 				2FA5CB742026183B00F1FA59 /* TwitterApp */,
 				2FA5CB732026183B00F1FA59 /* Products */,
@@ -286,16 +298,26 @@
 				2F9EEC03202687F10093FBDA /* DesignableX */,
 				2F9EEBFA202667F50093FBDA /* helper.swift */,
 				2F9EEBDF2026394D0093FBDA /* Constants.swift */,
+				2F538984202BE0430035B68D /* Localizable.strings */,
 			);
 			path = TwitterApp;
 			sourceTree = "<group>";
 		};
-		2FD6D77D2026EB9F00499C95 /* ViewModel */ = {
+		2FC1A04F202BAF860052D03B /* Localization */ = {
+			isa = PBXGroup;
+			children = (
+				2FC1A051202BAFB80052D03B /* Language.swift */,
+				2FC1A050202BAFB70052D03B /* Localizer.swift */,
+			);
+			path = Localization;
+			sourceTree = "<group>";
+		};
+		2FD6D77D2026EB9F00499C95 /* ViewModel(imageCashingForView) */ = {
 			isa = PBXGroup;
 			children = (
 				2FD6D77B2026D7B700499C95 /* customImageView.swift */,
 			);
-			path = ViewModel;
+			path = "ViewModel(imageCashingForView)";
 			sourceTree = "<group>";
 		};
 		CF064C10EDB5F28F6EF1C028 /* Frameworks */ = {
@@ -378,10 +400,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2F9EEBF520265E5D0093FBDA /* Followers.storyboard in Resources */,
+				2F538978202BDFDE0035B68D /* Followers.storyboard in Resources */,
 				2F9EEC01202687600093FBDA /* FollowerCell.xib in Resources */,
+				2F538982202BE0430035B68D /* Localizable.strings in Resources */,
 				2FCA8B3920286DEC007912E8 /* TweetCell.xib in Resources */,
-				2F36543420274CB200BD0979 /* Profile.storyboard in Resources */,
+				2F53897C202BDFF50035B68D /* Profile.storyboard in Resources */,
 				2F9EEBE5202639B10093FBDA /* LaunchScreen.storyboard in Resources */,
 				2FA5CB7D2026183B00F1FA59 /* Assets.xcassets in Resources */,
 				2F9EEBF7202660240093FBDA /* MedulaOne-Regular.ttf in Resources */,
@@ -467,6 +490,7 @@
 				2F24663E202A9ABA00101478 /* UIViewController+Extension.swift in Sources */,
 				2F9EEBDB202638240093FBDA /* User.swift in Sources */,
 				2F1AD62B2029945F00882B7E /* ProfileHeader.swift in Sources */,
+				2FC1A053202BAFB80052D03B /* Language.swift in Sources */,
 				2F9EEC052026880F0093FBDA /* UIImageViewX.swift in Sources */,
 				2F9EEBEA202640E30093FBDA /* String+Extension.swift in Sources */,
 				2FCA8B3820286DEC007912E8 /* TweetCell.swift in Sources */,
@@ -483,6 +507,7 @@
 				2FD6D77C2026D7B700499C95 /* customImageView.swift in Sources */,
 				2F365439202795D600BD0979 /* UIButtonX.swift in Sources */,
 				2F246642202B3D7300101478 /* AuthController.swift in Sources */,
+				2FC1A052202BAFB80052D03B /* Localizer.swift in Sources */,
 				2F365436202761F500BD0979 /* ProfileViewController.swift in Sources */,
 				2F246637202A30EE00101478 /* ProfileViewController+Extension.swift in Sources */,
 				2F246631202A142600101478 /* FollowerViewController+Extension.swift in Sources */,
@@ -497,10 +522,38 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		2F53897A202BDFDE0035B68D /* Followers.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2F538979202BDFDE0035B68D /* ar */,
+				2F53897B202BDFE10035B68D /* Base */,
+			);
+			name = Followers.storyboard;
+			sourceTree = "<group>";
+		};
+		2F53897E202BDFF50035B68D /* Profile.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2F53897D202BDFF50035B68D /* ar */,
+				2F53897F202BDFF60035B68D /* Base */,
+			);
+			name = Profile.storyboard;
+			sourceTree = "<group>";
+		};
+		2F538984202BE0430035B68D /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2F538983202BE0430035B68D /* ar */,
+				2F538985202BE0450035B68D /* en */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		2F9EEBE3202639B00093FBDA /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				2F9EEBE4202639B00093FBDA /* Base */,
+				2FC1A055202BAFD40052D03B /* ar */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -509,6 +562,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				2F9EEBED20264AED0093FBDA /* Base */,
+				2FC1A054202BAFD30052D03B /* ar */,
 			);
 			name = Start.storyboard;
 			sourceTree = "<group>";
@@ -520,6 +574,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -564,7 +619,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -577,6 +632,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -615,7 +671,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";

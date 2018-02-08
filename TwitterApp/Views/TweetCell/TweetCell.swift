@@ -34,7 +34,6 @@ class TweetCell: UICollectionViewCell {
                 if let image = profile_picture_imageView.image, let id = tweet.follower?.profile_picture_id {
                     imageStore.deleteImage(forKey: id) // delete old
                     imageStore.setImage(image, forKey: id) // set new ........
-                    print("\n\n saved")
                 }
             }
         }
