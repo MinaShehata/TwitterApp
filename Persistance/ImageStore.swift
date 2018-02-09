@@ -10,6 +10,9 @@ import UIKit
 
 class ImageStore{
     
+    static let shared = ImageStore()
+    private init() {}
+    
     let cache = NSCache<NSString, UIImage>()
     
     func imageURL(forKey key: String) -> URL {
@@ -27,7 +30,7 @@ class ImageStore{
         
         // Create full URL for image
         let url = imageURL(forKey: key)
-        
+        deleteImage(forKey: key)
         // Turn image into JPEG data
         if let data = UIImageJPEGRepresentation(image, 0.5) {
             // Write it to full URL
@@ -45,5 +48,19 @@ class ImageStore{
         }
         cache.setObject(imageFromDisk, forKey: key as NSString)
         return imageFromDisk
+    }
+    
+    func deleteImage(forKey key: String) {
+        cache.removeObject(forKey: key as NSString)
+        
+        let url = imageURL(forKey: key)
+        do {
+            let exists = FileManager.default.fileExists(atPath: url.path)
+            if exists {
+                try FileManager.default.removeItem(at: url)
+            }
+        } catch let deleteError {
+            print("Error when removing the image from disk: \(deleteError)")
+        }
     }
 }

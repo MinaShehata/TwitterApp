@@ -27,23 +27,20 @@ class TweetCell: UICollectionViewCell {
     
     func setupTweet(with tweet: Tweet)
     {
-        if let followerProfilePicture = tweet.follower?.profile_picture_URL {
-            profile_picture_imageView.loadProfileImageWithUrl(url: followerProfilePicture, completion: {
-                if $0 {
-                    let imageStore = ImageStore()
-                    if let image = self.profile_picture_imageView.image, let id = tweet.follower?.profile_picture_id {
-                        imageStore.setImage(image, forKey: id) // set new ........
-                    }
+        if helper.connected {
+            if let followerProfilePicture = tweet.follower?.profile_picture_URL {
+                profile_picture_imageView.loadProfileImageWithUrl(url: followerProfilePicture)
+                if let image = self.profile_picture_imageView.image, let id = tweet.follower?.profile_picture_id {
+                    ImageStore.shared.setImage(image, forKey: id) // set new ........
                 }
-                else {
-                    let imageStore = ImageStore()
-                    if let id = tweet.follower?.profile_picture_id, let image = imageStore.image(forKey: id) {
-                        DispatchQueue.main.async {
-                            self.profile_picture_imageView.image = image
-                        }
-                    }
+            }
+        }
+        else {
+            if let id = tweet.follower?.profile_picture_id, let image = ImageStore.shared.image(forKey: id) {
+                DispatchQueue.main.async {
+                    self.profile_picture_imageView.image = image
                 }
-            })
+            }
         }
 
 

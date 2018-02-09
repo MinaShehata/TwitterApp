@@ -30,7 +30,7 @@ final class Loader {
                         }
                     }
                     let next_cursor = json["next_cursor"].int ?? cursor
-                    print(next_cursor)
+                    print("next_cursor is \(next_cursor)---------")
                     completion(followers,true, nil, next_cursor)
                     
                 case .failure(let error):

@@ -10,7 +10,6 @@ import UIKit
 
 class helper: NSObject {
     
-    
     class func saveCredential(bearer_token: String, username: String)
     {
         // save api_token to user Defaults
@@ -68,5 +67,26 @@ class helper: NSObject {
         return NSString(string: text).boundingRect(with: size, options: options, attributes: attribute, context: nil)
     }
 
-   
+    // very important.......... add observer on spacific view controller for Generics
+    /// network stuff here we add observer and simple status function on UIViewController Class to alert user that network status changed
+    static var connected: Bool = false // for sending requests to server.........
+    class func addNetworkObserver(on viewController: UIViewController) {
+        NotificationCenter.default.addObserver(viewController, selector: #selector(viewController.networkStatusChanged(_:)), name: NSNotification.Name(rawValue: ReachabilityStatusChangedNotification), object: nil)
+        Reach().monitorReachabilityChanges()
+        let status = Reach().connectionStatus()
+        switch status {
+        case .unknown, .offline:
+            connected = false
+        case .online(.wwan):
+            connected = true
+        case .online(.wiFi):
+            connected = true
+        }
+    }
+    
+    // remove from  viewcontroller when it disappear from window for memory leaks.............
+    class func removeNetworkObserver(from viewController: UIViewController) {
+        NotificationCenter.default.removeObserver(viewController, name: NSNotification.Name(rawValue: ReachabilityStatusChangedNotification), object: nil)
+    }
+    ////////////////// finish network Stuffffffff
 }

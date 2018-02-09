@@ -38,27 +38,23 @@ class FollowerCell: UICollectionViewCell {
         }
 
         // setup Image
-        guard let profilePicURL = follower.profile_picture_URL else {
-            return
-        }
-        profile_picture_URL.loadProfileImageWithUrl(url: profilePicURL, completion: {
-            if $0 {
-                let imageStore = ImageStore()
+        if helper.connected {
+            if let profilePicURL = follower.profile_picture_URL {
+                profile_picture_URL.loadProfileImageWithUrl(url: profilePicURL)
                 if let image = self.profile_picture_URL.image , let id = follower.profile_picture_id {
-                    imageStore.setImage(image, forKey: id)
+                    ImageStore.shared.setImage(image, forKey: id)
                 }
             }
-            else {
-                let imageStore = ImageStore()
-                if let id = follower.profile_picture_id, let image = imageStore.image(forKey: id) {
-                    DispatchQueue.main.async {
-                        self.profile_picture_URL.image = image
-
-                    }
+        }
+        else {
+            if let id = follower.profile_picture_id, let image = ImageStore.shared.image(forKey: id) {
+                DispatchQueue.main.async {
+                    self.profile_picture_URL.image = image
                 }
             }
-        })
-
+        }
+        
+        
     }
 
 }

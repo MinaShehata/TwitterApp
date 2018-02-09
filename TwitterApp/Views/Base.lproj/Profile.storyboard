@@ -33,7 +33,7 @@
                                 <rect key="frame" x="16" y="36" width="32" height="32"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wpb-9W-hHm" customClass="UIButtonX" customModule="TwitterApp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="32" height="32"/>
+                                        <rect key="frame" x="5" y="5" width="22" height="22"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                         <state key="normal" image="BackButton" backgroundImage="button:Wpb-9W-hHm:backgroundImage"/>
                                         <userDefinedRuntimeAttributes>
@@ -49,12 +49,12 @@
                                 <color key="backgroundColor" red="0.14335605500000001" green="0.1862597466" blue="0.28200483320000003" alpha="0.66564105308219179" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="Wpb-9W-hHm" firstAttribute="top" secondItem="oF3-Kc-Q27" secondAttribute="top" id="FZa-iy-P8g"/>
+                                    <constraint firstItem="Wpb-9W-hHm" firstAttribute="top" secondItem="oF3-Kc-Q27" secondAttribute="top" constant="5" id="4Wi-NB-vDn"/>
+                                    <constraint firstAttribute="bottom" secondItem="Wpb-9W-hHm" secondAttribute="bottom" constant="5" id="LIF-D5-y58"/>
                                     <constraint firstAttribute="width" constant="32" id="N6S-EY-jxl"/>
                                     <constraint firstAttribute="height" constant="32" id="Tic-O2-8dt"/>
-                                    <constraint firstAttribute="trailing" secondItem="Wpb-9W-hHm" secondAttribute="trailing" id="YbO-Ar-a1U"/>
-                                    <constraint firstItem="Wpb-9W-hHm" firstAttribute="leading" secondItem="oF3-Kc-Q27" secondAttribute="leading" id="bsO-iL-Dl3"/>
-                                    <constraint firstAttribute="bottom" secondItem="Wpb-9W-hHm" secondAttribute="bottom" id="nFn-Yp-LC0"/>
+                                    <constraint firstAttribute="trailing" secondItem="Wpb-9W-hHm" secondAttribute="trailing" constant="5" id="YRw-A7-OQV"/>
+                                    <constraint firstItem="Wpb-9W-hHm" firstAttribute="leading" secondItem="oF3-Kc-Q27" secondAttribute="leading" constant="5" id="xoV-Hp-olW"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">

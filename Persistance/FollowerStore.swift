@@ -8,8 +8,19 @@
 
 import Foundation
 
-class FollowerStore {
-        // refrence
+final class FollowerStore {
+    
+    // singleton object......... that manage all operation of database  in system......
+    static let shared = FollowerStore()
+    private init() {
+        // get all followers from document dirctory in application Sandbox
+        if let archivedFollowers = NSKeyedUnarchiver.unarchiveObject(withFile: followersArchiveURL.path) as? [Follower] {
+            followers = archivedFollowers
+        }
+    }
+    /////
+    
+    // refrence
     var followers = [Follower]()
     // path on mobile
     let followersArchiveURL: URL = {
@@ -19,12 +30,7 @@ class FollowerStore {
         let documentDirectory = documentsDirectories.first!
         return documentDirectory.appendingPathComponent("followers.archive")
     }()
-    // get all followers from document dirctory in application Sandbox
-    init() {
-        if let archivedFollowers = NSKeyedUnarchiver.unarchiveObject(withFile: followersArchiveURL.path) as? [Follower] {
-            followers = archivedFollowers
-        }
-    }
+    
     // helper Function......
     func append(with followers: [Follower]) {
         self.followers += followers
@@ -43,4 +49,21 @@ class FollowerStore {
         print("followers path url \(followersArchiveURL)")
         return NSKeyedArchiver.archiveRootObject(followers, toFile: followersArchiveURL.path)
     }
+    
+    func updateDatabase() -> Bool {
+        do{
+            let exist = FileManager.default.fileExists(atPath: followersArchiveURL.path)
+            if exist {
+                try FileManager.default.removeItem(atPath: followersArchiveURL.path)
+            }
+            let x = save()
+            x ? print("saved updates successfully") : print("error in updating database \(followersArchiveURL.path)")
+            return true
+        }
+        catch {
+            print("error in updating database \(error.localizedDescription)")
+        }
+        return false
+    }
+    
 }

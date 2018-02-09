@@ -24,50 +24,42 @@ class ProfileHeader: UICollectionReusableView {
     }
     
     func setupHeader(with follower: Follower) {
-           
+        
+        if helper.connected {
             if let url = follower.profile_banner_url {
-                profile_banner_imageView.loadProfileImageWithUrl(url: url, completion: {
-                    if $0 {
-                        let imageStore = ImageStore()
-                        if let image = self.profile_banner_imageView.image , let id = follower.banner_picture_id {
-                            imageStore.setImage(image, forKey: id) // set net ........
-                        }
-                    }
-                    else{
-                        let imageStore = ImageStore()
-                        if let id = follower.banner_picture_id {
-                            if let image = imageStore.image(forKey: id) {
-                                DispatchQueue.main.async {
-                                    self.profile_banner_imageView.image = image
-                                }
-                                
-                            }
-                        }
-                    }
-                    
-                })
+                profile_banner_imageView.loadProfileImageWithUrl(url: url)
+                
+                if let image = self.profile_banner_imageView.image , let id = follower.banner_picture_id {
+                    ImageStore.shared.setImage(image, forKey: id) // set net ........
+                }
             }
-
+            
+            
             if let url = follower.profile_picture_URL {
-                profile_picture_imageView.loadProfileImageWithUrl(url: url, completion: {
-                    if $0 {
-                        let imageStore = ImageStore()
-                        if let image = self.profile_picture_imageView.image , let id = follower.profile_picture_id {
-                            imageStore.setImage(image, forKey: id) // set net ........
-                        }
-                    }
-                    else{
-                        let imageStore = ImageStore()
-                        if let id = follower.profile_picture_id {
-                            if let image = imageStore.image(forKey: id) {
-                                DispatchQueue.main.async {
-                                    self.profile_picture_imageView.image = image
-                                }
-                            }
-                        }
-                    }
-                })
+                profile_picture_imageView.loadProfileImageWithUrl(url: url)
+                if let image = self.profile_picture_imageView.image , let id = follower.profile_picture_id {
+                    ImageStore.shared.setImage(image, forKey: id) // set net ........
+                }
             }
+            
+        }
+        else {
+           
+            if let id = follower.banner_picture_id, let image = ImageStore.shared.image(forKey: id) {
+                DispatchQueue.main.async {
+                    self.profile_banner_imageView.image = image
+                }
+            }
+            
+            if let id = follower.profile_picture_id, let image = ImageStore.shared.image(forKey: id) {
+                DispatchQueue.main.async {
+                    self.profile_picture_imageView.image = image
+                }
+            }
+        }
+            
+            
+    
         userNameLabel.text = follower.userName
         handleLabel.text = "@\(follower.handle)"
     }

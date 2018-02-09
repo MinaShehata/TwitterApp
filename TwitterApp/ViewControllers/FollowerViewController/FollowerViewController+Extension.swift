@@ -8,24 +8,10 @@
 
 import UIKit
 
-protocol FollowerViewControllerModeDelegate: class {
-    func did(update productSort: Follower) -> CGSize
-}
-
 extension FollowerViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 0
-    }
-    
-    func compare(_ width: CGFloat, and height: CGFloat) -> Bool {
-        
-        if width < height {
-//            in portrait
-            return true
-        }
-        else { return false } // in landscape
-        
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -56,7 +42,8 @@ extension FollowerViewController: UICollectionViewDelegateFlowLayout {
     /// pagination load more.......
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         let followers_count = followers.count
-        if indexPath.item == followers_count - 1 {
+        // you show be connected to network to load more and display last cell
+        if indexPath.item == followers_count - 1 && helper.connected {
             load_more()
         }
     }

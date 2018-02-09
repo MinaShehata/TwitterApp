@@ -22,7 +22,6 @@ class FollowerViewController: UIViewController {
         refresher.tintColor = UIColor.blue
         return refresher
     }()
-    var followerStore = FollowerStore()
     
     var followers = [Follower]()
     override func viewDidLoad() {
@@ -36,26 +35,21 @@ class FollowerViewController: UIViewController {
         collectionView.refreshControl = refreshControll
         collectionView.contentInset = UIEdgeInsets(top: 5, left: 0, bottom: 0, right: 0)
         setupNavigationBarButtons()
+        helper.addNetworkObserver(on: self) // listen for network status
         
-        // get followers
-        getAllFollowers()
-
+        // if connected load data from network else load from offline store
+        helper.connected ? getAllFollowers() : loadOfflineData()
+       
     }
-
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(false, animated: true)
     }
-   
-    // check network status
-    func loadOfflineData() {
-        refreshControll.endRefreshing()
-        followers = followerStore.followers
-        collectionView.reloadData()
-    }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        helper.removeNetworkObserver(from: self)
         self.navigationController?.setNavigationBarHidden(true, animated: true)
     }
     
@@ -82,18 +76,17 @@ class FollowerViewController: UIViewController {
         helper.removeCredential()
     }
     
+    
     // pagination 10 per page // some variables
     var next_cursor = -1
-    
     // added @objc because of #selector is Objective-c Function
-    
     @objc final private func getAllFollowers() {
-        self.refreshControll.endRefreshing()
         API.shared.followers(completion: { [weak self] (followers, next_cursor, error)  in
-            if error != nil {
-                self?.loadOfflineData()
+            if let error = error {
+                self?.showAlert(title: "error", message: error.localizedDescription)
                 return
             }
+            self?.refreshControll.endRefreshing()
             if let followers = followers {
                 self?.followers = followers
                 self?.collectionView.reloadData()
@@ -102,12 +95,20 @@ class FollowerViewController: UIViewController {
         })
     }
     
+    
+    func loadOfflineData() {
+        refreshControll.endRefreshing()
+        followers = FollowerStore.shared.followers
+        collectionView.reloadData()
+    }
+    
+    
     // load on scrolling.....
     func load_more() { //load  another 10 users....
         guard next_cursor > 0 else { return }
         API.shared.followers(current_cursor: next_cursor) { [weak self](followers, next_cursor, error) in
-            if error != nil {
-//                print(error?.localizedDescription)
+            if let error = error {
+                self?.showAlert(title: "error", message: error.localizedDescription)
                 return
             }
             if let followers = followers {

@@ -16,7 +16,7 @@ final class API
     private init(){} // private initializer to make sure that class will not initialize from any other Place....
     
     // reference for persistance
-    var followerStore = FollowerStore()
+//    var followerStore = FollowerStore()
     
     // page defaults to 1
     func followers(current_cursor: Int = -1, completion: @escaping (_ followers: [Follower]?, _ previous_cursor: Int, _ error :Error?) -> ()) {
@@ -30,9 +30,11 @@ final class API
                     completion(nil, next_cursor, error)
                     return
                 }
+              
                 if let fs = followers {
-                    self.followerStore.append(with: fs) // save in background thread
-                    let _ = self.followerStore.save()
+                    FollowerStore.shared.append(with: fs)
+                    let _ = FollowerStore.shared.updateDatabase()
+                    print("update followers in database")
                     DispatchQueue.main.async {
                         completion(fs, next_cursor, nil)
                     }
@@ -53,9 +55,11 @@ final class API
                     return
                 }
                 if let tw = tweets {
-                    
-                    self.followerStore.setTweets(of: follower, with: tw)
-                    let _ = self.followerStore.save()
+
+                    FollowerStore.shared.setTweets(of: follower, with: tw)
+                    let grant = FollowerStore.shared.updateDatabase()
+                    print("update followers in database -------\(grant)")
+                    print("upate status of tweets ---------\(grant)")
                     // save in background thread
                     DispatchQueue.main.async {
                         completion(tw, nil)

@@ -23,13 +23,10 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var profileLayout: ProfileLayout!
     
-    // for persistance.....
-    var followerStore = FollowerStore()
-
-    /////
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         // CollectionView Setup.....
         collectionView.delegate = self
         collectionView.dataSource = self
@@ -37,25 +34,28 @@ class ProfileViewController: UIViewController {
         collectionView.register(UINib(nibName: Constants.TweetCell, bundle: nil), forCellWithReuseIdentifier: Constants.TweetCell)
         
         profileLayout.headerReferenceSize = CGSize(width: view.frame.width, height: 200)
-        getLastTenTweets()
+        helper.connected ? getLastTenTweets() : loadOflineStorage()
 
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        // start network observer for lestin to network state.........
+        helper.addNetworkObserver(on: self)
        
     }
   
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        helper.removeNetworkObserver(from: self)
     }
     
     private func getLastTenTweets() {
-        if let follower = follower{
+        if let follower = follower {
             API.shared.tweets(of: follower) { [weak self] (tweets, error) in
-                if error != nil {
-                    self?.loadOflineStorage(with: follower)
+                if let error = error {
+                    self?.showAlert(title: "error", message: error.localizedDescription)
                     return
                 }
                 if let tweets = tweets {
@@ -65,9 +65,11 @@ class ProfileViewController: UIViewController {
             }
         }
     }
-    func loadOflineStorage(with follower: Follower){
-        follower.tweets = followerStore.getTweets(of: follower)
-        collectionView.reloadData()
+    func loadOflineStorage() {
+        if let follower = follower {
+            follower.tweets = FollowerStore.shared.getTweets(of: follower)
+            collectionView.reloadData()
+        }
     }
 
     @IBAction func backButton(_ sender: UIButtonX)
