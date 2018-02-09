@@ -19,12 +19,12 @@ final class API
 //    var followerStore = FollowerStore()
     
     // page defaults to 1
-    func followers(current_cursor: Int = -1, completion: @escaping (_ followers: [Follower]?, _ previous_cursor: Int, _ error :Error?) -> ()) {
+    func followers(cursor: Int64 = -1, completion: @escaping (_ followers: [Follower]?, _ next_cursor: Int64, _ error :Error?) -> ()) {
         let url = Constants.followers
         if let user = helper.getCredential() {
-            let parameter: [String: String] = ["screen_name": user.userName, "cursor": "\(current_cursor)", "count": "10"]
+            let parameter: [String: String] = ["screen_name": user.userName, "cursor": "\(cursor)", "count": "10"]
             let token = ["Authorization" :"Bearer " + user.bearer_token]
-            Loader.getAllFollowersFromServer(cursor: current_cursor, withURL: url, parameter: parameter, token: token, completion: { (followers, success, error, next_cursor) in
+            Loader.getAllFollowersFromServer(cursor: cursor, withURL: url, parameter: parameter, token: token, completion: { (followers, success, error, next_cursor) in
                 if let error = error {
                     print(error.localizedDescription)
                     completion(nil, next_cursor, error)

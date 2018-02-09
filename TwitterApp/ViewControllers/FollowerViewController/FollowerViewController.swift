@@ -36,7 +36,7 @@ class FollowerViewController: UIViewController {
         collectionView.contentInset = UIEdgeInsets(top: 5, left: 0, bottom: 0, right: 0)
         setupNavigationBarButtons()
         helper.addNetworkObserver(on: self) // listen for network status
-        
+
         // if connected load data from network else load from offline store
         helper.connected ? getAllFollowers() : loadOfflineData()
        
@@ -78,7 +78,7 @@ class FollowerViewController: UIViewController {
     
     
     // pagination 10 per page // some variables
-    var next_cursor = -1
+    var next_cursor: Int64 = -1 // because my device is 32-bit procossor and cursor is long value ....
     // added @objc because of #selector is Objective-c Function
     @objc final private func getAllFollowers() {
         API.shared.followers(completion: { [weak self] (followers, next_cursor, error)  in
@@ -106,7 +106,7 @@ class FollowerViewController: UIViewController {
     // load on scrolling.....
     func load_more() { //load  another 10 users....
         guard next_cursor > 0 else { return }
-        API.shared.followers(current_cursor: next_cursor) { [weak self](followers, next_cursor, error) in
+        API.shared.followers(cursor: next_cursor) { [weak self](followers, next_cursor, error) in
             if let error = error {
                 self?.showAlert(title: "error", message: error.localizedDescription)
                 return

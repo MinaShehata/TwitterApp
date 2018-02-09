@@ -10,8 +10,48 @@ import UIKit
 
 class ProfileHeader: UICollectionReusableView {
 
-    @IBOutlet weak var profile_banner_imageView: customImageView!
-    @IBOutlet weak var profile_picture_imageView: customImageView!
+    @IBOutlet weak var profile_banner_imageView: customImageView! {
+        didSet {
+            let tapGesture = UITapGestureRecognizer(target: self, action: #selector(openImageInFullBrowser))
+            tapGesture.numberOfTapsRequired = 1
+            helper.image = "banner"
+            profile_banner_imageView.addGestureRecognizer(tapGesture)
+        }
+    }
+    // for show in full browser
+    let blackView = UIScrollView()
+    lazy var showBannerImageView: UIImageView = {
+        let iv = UIImageView()
+        iv.isUserInteractionEnabled = true
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(openImageInFullBrowser))
+        tapGesture.numberOfTapsRequired = 1
+        iv.addGestureRecognizer(tapGesture)
+        iv.image = #imageLiteral(resourceName: "placeholder_image")
+        return iv
+    }()
+    
+    lazy var showProfileImageView: UIImageView = {
+        let iv = UIImageView()
+        iv.isUserInteractionEnabled = true
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(openProfileImageInFullProwser))
+        tapGesture.numberOfTapsRequired = 1
+        iv.addGestureRecognizer(tapGesture)
+        iv.image = #imageLiteral(resourceName: "placeholder_image")
+        return iv
+    }()
+    
+    @IBOutlet weak var profile_picture_imageView: customImageView!{
+        didSet{
+            let tapGesture = UITapGestureRecognizer(target: self, action: #selector(openProfileImageInFullProwser))
+            tapGesture.numberOfTapsRequired = 1
+            helper.image = "profile"
+            profile_picture_imageView.addGestureRecognizer(tapGesture)
+        }
+    }
+    
+    
+    
+    
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var handleLabel: UILabel!
     
@@ -69,6 +109,84 @@ class ProfileHeader: UICollectionReusableView {
 
 
 
+extension ProfileHeader: UIScrollViewDelegate {
+    
+    public func viewForZooming(in scrollView: UIScrollView) -> UIView? {
+        return helper.image == "banner" ? profile_banner_imageView : profile_picture_imageView
+    }
+
+    
+    @objc func openImageInFullBrowser() {
+        guard let window = UIApplication.shared.keyWindow else { return }
+        let value = helper.inZooming
+        if value == false {
+            helper.inZooming = true
+            showBannerImageView.removeFromSuperview()
+            blackView.removeFromSuperview()
+        }
+        if value {
+            blackView.backgroundColor = .black
+            blackView.minimumZoomScale = 1.0
+            blackView.maximumZoomScale = 6.0
+            blackView.delegate = self
+            blackView.translatesAutoresizingMaskIntoConstraints = false
+            window.addSubview(blackView)
+            blackView.topAnchor.constraint(equalTo: window.topAnchor).isActive = true
+            blackView.leftAnchor.constraint(equalTo: window.leftAnchor).isActive = true
+            blackView.rightAnchor.constraint(equalTo: window.rightAnchor).isActive = true
+            blackView.bottomAnchor.constraint(equalTo: window.bottomAnchor).isActive = true
+            showBannerImageView.translatesAutoresizingMaskIntoConstraints = false
+            showBannerImageView.contentMode = .scaleAspectFit
+            blackView.addSubview(showBannerImageView)
+            
+            showBannerImageView.topAnchor.constraint(equalTo: blackView.topAnchor).isActive = true
+            showBannerImageView.leftAnchor.constraint(equalTo: blackView.leftAnchor).isActive = true
+            showBannerImageView.rightAnchor.constraint(equalTo: blackView.rightAnchor).isActive = true
+            showBannerImageView.bottomAnchor.constraint(equalTo: blackView.bottomAnchor).isActive = true
+            showBannerImageView.centerXAnchor.constraint(equalTo: blackView.centerXAnchor).isActive = true
+            showBannerImageView.centerYAnchor.constraint(equalTo: blackView.centerYAnchor).isActive = true
+            showBannerImageView.image = profile_banner_imageView.image
+            helper.inZooming = false
+        }
+    }
+    @objc func openProfileImageInFullProwser() {
+
+        guard let window = UIApplication.shared.keyWindow else { return }
+        let value = helper.inZooming
+        if value == false {
+            helper.inZooming = true
+            showProfileImageView.removeFromSuperview()
+            blackView.removeFromSuperview()
+        }
+        if value {
+            blackView.backgroundColor = .black
+            blackView.minimumZoomScale = 1.0
+            blackView.maximumZoomScale = 6.0
+            blackView.delegate = self
+            blackView.translatesAutoresizingMaskIntoConstraints = false
+            window.addSubview(blackView)
+            blackView.topAnchor.constraint(equalTo: window.topAnchor).isActive = true
+            blackView.leftAnchor.constraint(equalTo: window.leftAnchor).isActive = true
+            blackView.rightAnchor.constraint(equalTo: window.rightAnchor).isActive = true
+            blackView.bottomAnchor.constraint(equalTo: window.bottomAnchor).isActive = true
+            showProfileImageView.translatesAutoresizingMaskIntoConstraints = false
+            showProfileImageView.contentMode = .scaleAspectFit
+            blackView.addSubview(showProfileImageView)
+            
+            showProfileImageView.topAnchor.constraint(equalTo: blackView.topAnchor).isActive = true
+            showProfileImageView.leftAnchor.constraint(equalTo: blackView.leftAnchor).isActive = true
+            showProfileImageView.rightAnchor.constraint(equalTo: blackView.rightAnchor).isActive = true
+            showProfileImageView.bottomAnchor.constraint(equalTo: blackView.bottomAnchor).isActive = true
+            showProfileImageView.centerXAnchor.constraint(equalTo: blackView.centerXAnchor).isActive = true
+            showProfileImageView.centerYAnchor.constraint(equalTo: blackView.centerYAnchor).isActive = true
+            showProfileImageView.image = profile_picture_imageView.image
+            helper.inZooming = false
+
+        }
+        
+        
+    }
+}
 
 
 

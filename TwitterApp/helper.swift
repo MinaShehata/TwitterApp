@@ -89,4 +89,10 @@ class helper: NSObject {
         NotificationCenter.default.removeObserver(viewController, name: NSNotification.Name(rawValue: ReachabilityStatusChangedNotification), object: nil)
     }
     ////////////////// finish network Stuffffffff
+    
+    /// this valriable for zoming capapility
+    static var inZooming = true
+    static var image = "banner"
+    
+    
 }
