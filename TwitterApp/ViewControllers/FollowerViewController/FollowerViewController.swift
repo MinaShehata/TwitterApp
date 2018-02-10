@@ -8,12 +8,9 @@
 
 import UIKit
 
-class FollowerViewController: UIViewController {
+class FollowerViewController: BaseVC {
 
     @IBOutlet weak var collectionView: UICollectionView!
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-    }
     
     // lazy means instantiate refresh control just when user refresh
     final lazy var refreshControll: UIRefreshControl = {
@@ -26,8 +23,7 @@ class FollowerViewController: UIViewController {
     var followers = [Follower]()
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        ///////////////////////////
+
         // setupCollectionView
         collectionView.delegate = self
         collectionView.dataSource = self
@@ -35,21 +31,17 @@ class FollowerViewController: UIViewController {
         collectionView.refreshControl = refreshControll
         collectionView.contentInset = UIEdgeInsets(top: 5, left: 0, bottom: 0, right: 0)
         setupNavigationBarButtons()
-        helper.addNetworkObserver(on: self) // listen for network status
-
         // if connected load data from network else load from offline store
         helper.connected ? getAllFollowers() : loadOfflineData()
+        
        
     }
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(false, animated: true)
     }
-    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        helper.removeNetworkObserver(from: self)
         self.navigationController?.setNavigationBarHidden(true, animated: true)
     }
     
@@ -76,12 +68,17 @@ class FollowerViewController: UIViewController {
         helper.removeCredential()
     }
     
-    
     // pagination 10 per page // some variables
     var next_cursor: Int64 = -1 // because my device is 32-bit procossor and cursor is long value ....
+    var isLoading = false
     // added @objc because of #selector is Objective-c Function
     @objc final private func getAllFollowers() {
+        
+        guard !isLoading else { return }
+        isLoading = true // close loading
+        
         API.shared.followers(completion: { [weak self] (followers, next_cursor, error)  in
+            self?.isLoading = false // open loading again ..
             if let error = error {
                 self?.showAlert(title: "error", message: error.localizedDescription)
                 return
@@ -89,24 +86,28 @@ class FollowerViewController: UIViewController {
             self?.refreshControll.endRefreshing()
             if let followers = followers {
                 self?.followers = followers
+                FollowerStore.shared.newFollowers = followers
                 self?.collectionView.reloadData()
                 self?.next_cursor = next_cursor
+                
             }
         })
     }
     
-    
     func loadOfflineData() {
         refreshControll.endRefreshing()
-        followers = FollowerStore.shared.followers
+        followers = FollowerStore.shared.savedFollowers
         collectionView.reloadData()
     }
     
-    
     // load on scrolling.....
     func load_more() { //load  another 10 users....
+        guard !isLoading else { return }
         guard next_cursor > 0 else { return }
+        isLoading = true // cloase loading
         API.shared.followers(cursor: next_cursor) { [weak self](followers, next_cursor, error) in
+            self?.isLoading = false // open loading more
+
             if let error = error {
                 self?.showAlert(title: "error", message: error.localizedDescription)
                 return
@@ -119,13 +120,11 @@ class FollowerViewController: UIViewController {
         }
     }
     
-    
     // grid setup here
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
         collectionView?.collectionViewLayout.invalidateLayout()
     }
-    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let identifier = segue.identifier, identifier == Constants.follower_profile_data {

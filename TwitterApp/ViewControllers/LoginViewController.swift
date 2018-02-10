@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LoginViewController: UIViewController {
+class LoginViewController: BaseVC {
     
     @IBOutlet weak private var twitterLogoImageView: UIImageView! {
         didSet
@@ -29,15 +29,9 @@ class LoginViewController: UIViewController {
         super.viewWillAppear(animated)
         langSegmentControl.selectedSegmentIndex = Language.currentLanguage() == "ar" ? 1 : 0
         langSegmentControl.setTitle(Language.currentLanguage() == "ar" ? "عربي" : "English", forSegmentAt: 0) 
-        helper.addNetworkObserver(on: self)
         setupAnimation()
         setupLoginButton()
         
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        helper.removeNetworkObserver(from: self)
     }
     
     final private func setupLoginButton() {

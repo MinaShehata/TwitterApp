@@ -29,10 +29,14 @@ class TweetCell: UICollectionViewCell {
     {
         if helper.connected {
             if let followerProfilePicture = tweet.follower?.profile_picture_URL {
-                profile_picture_imageView.loadProfileImageWithUrl(url: followerProfilePicture)
-                if let image = self.profile_picture_imageView.image, let id = tweet.follower?.profile_picture_id {
-                    ImageStore.shared.setImage(image, forKey: id) // set new ........
-                }
+                profile_picture_imageView.loadProfileImageWithUrl(url: followerProfilePicture, completion: {
+                    if $0 == true {
+                        if let image = self.profile_picture_imageView.image, let id = tweet.follower?.profile_picture_id {
+                            ImageStore.shared.setImage(image, forKey: id) // set new ........
+                        }
+                    }
+                })
+                
             }
         }
         else {

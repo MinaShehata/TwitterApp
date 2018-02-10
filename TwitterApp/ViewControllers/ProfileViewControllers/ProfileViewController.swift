@@ -6,27 +6,36 @@
 //  Copyright © 2018 Mina Gad. All rights reserved.
 //
 
-import UIKit
-
 
 import UIKit
 
-class ProfileViewController: UIViewController {
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-    }
+class ProfileViewController: BaseVC {
     
     var follower: Follower?
     
     // tweets collection View
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var profileLayout: ProfileLayout!
+    // clickable stuff.........
+    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var clickableImageView: UIImageView! {
+        didSet {
+            let tapGesture = UITapGestureRecognizer(target: self, action: #selector(closeScrollView))
+            tapGesture.numberOfTapsRequired = 1
+            clickableImageView.addGestureRecognizer(tapGesture)
+        }
+    }
     
-    
+    @objc func closeScrollView() {
+        scrollView.zoomScale = 1.0
+        scrollView.alpha = 0
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        scrollView.alpha = 0
+        scrollView.delegate = self
+        scrollView.minimumZoomScale = 1.0
+        scrollView.maximumZoomScale = 3.0
         // CollectionView Setup.....
         collectionView.delegate = self
         collectionView.dataSource = self
@@ -36,19 +45,6 @@ class ProfileViewController: UIViewController {
         profileLayout.headerReferenceSize = CGSize(width: view.frame.width, height: 200)
         helper.connected ? getLastTenTweets() : loadOflineStorage()
 
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        // start network observer for lestin to network state.........
-        helper.addNetworkObserver(on: self)
-       
-    }
-  
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        helper.removeNetworkObserver(from: self)
     }
     
     private func getLastTenTweets() {
@@ -80,5 +76,10 @@ class ProfileViewController: UIViewController {
     {
         return .lightContent
     }
-    
+}
+
+extension ProfileViewController: UIScrollViewDelegate {
+    func viewForZooming(in scrollView: UIScrollView) -> UIView? {
+        return clickableImageView
+    }
 }

@@ -14,7 +14,7 @@ let imageCashe = NSCache<NSString , UIImage>()
 class customImageView: UIImageViewX {
     var imageUrl: URL?
 
-    func loadProfileImageWithUrl(url: String){
+    func loadProfileImageWithUrl(url: String, completion: @escaping (_ success: Bool?) -> () ){
         image = nil
         
         guard let uRL = URL(string: url) else { return }
@@ -23,6 +23,7 @@ class customImageView: UIImageViewX {
         // from cache when network available.......
         if let image = imageCashe.object(forKey: url as NSString) {
             self.image = image
+            completion(true)
             return
         }
         
@@ -33,12 +34,14 @@ class customImageView: UIImageViewX {
                     if let downloadesImage = UIImage(data: imageData), uRL == self?.imageUrl {
                         imageCashe.setObject(downloadesImage, forKey: url as NSString)
                         self?.image = downloadesImage
+                        completion(true)
                     }
                 }
             }
             catch
             {
                 print(error.localizedDescription)
+                completion(false)
             }
         }
         

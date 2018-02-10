@@ -13,7 +13,7 @@ import TwitterKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-//    var followerStore = FollowerStore()
+
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -29,8 +29,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             print("User \(user)")
             let vc = UIStoryboard(name: "Followers", bundle: nil).instantiateInitialViewController()!
             window?.rootViewController = vc
-            
         }
+        
         
         return true
     }
@@ -61,6 +61,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+        // save to database .................
+        let granted = FollowerStore.shared.updateDatabase()
+        if granted {
+            print("\(granted) database updated successfully")
+        }
+        else {
+            print("error while updating database......")
+        }
+        
     }
 
 

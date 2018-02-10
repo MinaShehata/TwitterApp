@@ -40,10 +40,13 @@ class FollowerCell: UICollectionViewCell {
         // setup Image
         if helper.connected {
             if let profilePicURL = follower.profile_picture_URL {
-                profile_picture_URL.loadProfileImageWithUrl(url: profilePicURL)
-                if let image = self.profile_picture_URL.image , let id = follower.profile_picture_id {
-                    ImageStore.shared.setImage(image, forKey: id)
-                }
+                profile_picture_URL.loadProfileImageWithUrl(url: profilePicURL, completion: {
+                    if $0 == true {
+                        if let image = self.profile_picture_URL.image , let id = follower.profile_picture_id {
+                            ImageStore.shared.setImage(image, forKey: id)
+                        }
+                    }
+                })
             }
         }
         else {

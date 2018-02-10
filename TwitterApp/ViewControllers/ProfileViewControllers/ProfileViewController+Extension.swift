@@ -25,7 +25,6 @@ extension ProfileViewController: UICollectionViewDelegateFlowLayout {
         super.viewWillTransition(to: size, with: coordinator)
         collectionView?.collectionViewLayout.invalidateLayout()
     }
-    
 }
 // MARK:- DATASOURCE
 extension ProfileViewController: UICollectionViewDataSource{
@@ -52,6 +51,8 @@ extension ProfileViewController: UICollectionViewDataSource{
         if kind == UICollectionElementKindSectionHeader {
             if let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: Constants.ProfileHeader, for: indexPath) as? ProfileHeader,let follower = follower {
                 header.setupHeader(with: follower)
+                setupClickableBannerInHeaderView(image: header.profile_banner_imageView)
+                setupClickableProfileInHeaderView(image: header.profile_picture_imageView)
             return header
             }
         }
@@ -61,6 +62,36 @@ extension ProfileViewController: UICollectionViewDataSource{
         
         return CGSize(width: view.frame.width, height: 200)
     }
+    
+    private func setupClickableBannerInHeaderView(image: customImageView) {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(openBannerImage))
+        tapGesture.numberOfTapsRequired = 1
+        image.addGestureRecognizer(tapGesture)
+    }
+    
+    
+    private func setupClickableProfileInHeaderView(image: customImageView) {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(openProfileImage))
+        tapGesture.numberOfTapsRequired = 1
+        image.addGestureRecognizer(tapGesture)
+    }
+    @objc func openBannerImage() {
+        clickableImageViewAnimation()
+        clickableImageView.image = helper.clickableBannerImageView
+    }
+    @objc func openProfileImage() {
+        clickableImageViewAnimation()
+        clickableImageView.image = helper.clickableProfileImageView
+    }
+    
+    func clickableImageViewAnimation() {
+        clickableImageView.transform = CGAffineTransform(translationX: 0, y: (-view.frame.height / 2))
+        UIView.animate(withDuration: 0.5, animations: {
+            self.scrollView.alpha = 1
+            self.clickableImageView.transform = .identity
+        })
+    }
+    
 }
 
 

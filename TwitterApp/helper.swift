@@ -71,7 +71,7 @@ class helper: NSObject {
     /// network stuff here we add observer and simple status function on UIViewController Class to alert user that network status changed
     static var connected: Bool = false // for sending requests to server.........
     class func addNetworkObserver(on viewController: UIViewController) {
-        NotificationCenter.default.addObserver(viewController, selector: #selector(viewController.networkStatusChanged(_:)), name: NSNotification.Name(rawValue: ReachabilityStatusChangedNotification), object: nil)
+        NotificationCenter.default.addObserver(viewController, selector: #selector(BaseVC.networkStatusChanged(_:)), name: NSNotification.Name(rawValue: ReachabilityStatusChangedNotification), object: nil)
         Reach().monitorReachabilityChanges()
         let status = Reach().connectionStatus()
         switch status {
@@ -89,10 +89,9 @@ class helper: NSObject {
         NotificationCenter.default.removeObserver(viewController, name: NSNotification.Name(rawValue: ReachabilityStatusChangedNotification), object: nil)
     }
     ////////////////// finish network Stuffffffff
+
     
     /// this valriable for zoming capapility
-    static var inZooming = true
-    static var image = "banner"
-    
-    
+    static var clickableBannerImageView: UIImage? = #imageLiteral(resourceName: "placeholder_image")
+    static var clickableProfileImageView: UIImage? = #imageLiteral(resourceName: "placeholder_image")
 }

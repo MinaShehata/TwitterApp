@@ -62,21 +62,44 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CxR-GM-iJq">
+                                <rect key="frame" x="0.0" y="-30" width="375" height="697"/>
+                                <subviews>
+                                    <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder_image" translatesAutoresizingMaskIntoConstraints="NO" id="Krp-GG-Dt0">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="696"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="Krp-GG-Dt0" firstAttribute="centerX" secondItem="CxR-GM-iJq" secondAttribute="centerX" id="BUw-PW-DqF"/>
+                                    <constraint firstItem="Krp-GG-Dt0" firstAttribute="centerY" secondItem="CxR-GM-iJq" secondAttribute="centerY" id="IFj-bv-qVB"/>
+                                    <constraint firstItem="Krp-GG-Dt0" firstAttribute="top" secondItem="CxR-GM-iJq" secondAttribute="top" id="S9A-dB-lov"/>
+                                    <constraint firstAttribute="bottom" secondItem="Krp-GG-Dt0" secondAttribute="bottom" id="b8w-zH-gl9"/>
+                                    <constraint firstAttribute="trailing" secondItem="Krp-GG-Dt0" secondAttribute="trailing" id="bnh-Yx-9X3"/>
+                                    <constraint firstItem="Krp-GG-Dt0" firstAttribute="leading" secondItem="CxR-GM-iJq" secondAttribute="leading" id="iav-9U-NmO"/>
+                                </constraints>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="CxR-GM-iJq" firstAttribute="leading" secondItem="fAT-9t-5Bg" secondAttribute="leading" id="Eid-31-A9b"/>
                             <constraint firstItem="d4V-3I-u0H" firstAttribute="leading" secondItem="fAT-9t-5Bg" secondAttribute="leading" id="Nh6-1R-VIL"/>
                             <constraint firstItem="d4V-3I-u0H" firstAttribute="bottom" secondItem="fAT-9t-5Bg" secondAttribute="bottom" id="RTw-Z7-UP9"/>
+                            <constraint firstItem="fAT-9t-5Bg" firstAttribute="trailing" secondItem="CxR-GM-iJq" secondAttribute="trailing" id="a2E-9h-ybq"/>
                             <constraint firstItem="d4V-3I-u0H" firstAttribute="trailing" secondItem="fAT-9t-5Bg" secondAttribute="trailing" id="aik-wm-Cv7"/>
                             <constraint firstItem="oF3-Kc-Q27" firstAttribute="top" secondItem="fAT-9t-5Bg" secondAttribute="top" constant="16" id="c5v-0X-JFd"/>
                             <constraint firstItem="d4V-3I-u0H" firstAttribute="top" secondItem="h7S-oQ-PUH" secondAttribute="top" id="ch5-hr-usz"/>
+                            <constraint firstItem="fAT-9t-5Bg" firstAttribute="bottom" secondItem="CxR-GM-iJq" secondAttribute="bottom" id="hpz-uc-za9"/>
                             <constraint firstItem="oF3-Kc-Q27" firstAttribute="leading" secondItem="fAT-9t-5Bg" secondAttribute="leading" constant="16" id="j7h-io-NeV"/>
+                            <constraint firstItem="CxR-GM-iJq" firstAttribute="top" secondItem="fAT-9t-5Bg" secondAttribute="top" constant="-50" id="ojc-0q-K6y"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="fAT-9t-5Bg"/>
                     </view>
                     <connections>
+                        <outlet property="clickableImageView" destination="Krp-GG-Dt0" id="TlR-ZS-OgE"/>
                         <outlet property="collectionView" destination="d4V-3I-u0H" id="cGA-VR-HGF"/>
                         <outlet property="profileLayout" destination="vBa-OE-ytb" id="a41-bd-3yv"/>
+                        <outlet property="scrollView" destination="CxR-GM-iJq" id="IC8-0j-1mH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MRB-KA-Sit" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -284,5 +307,6 @@ iyv3K/kr/iwMLBAsFywcLCksLCw5LD4sRixJLE4sVixZLGssbixzAAAAAAAAAgEAAAAAAAAAWQAAAAAA
 AAAAAAAAAAAALHU
 </mutableData>
         </image>
+        <image name="placeholder_image" width="800" height="600"/>
     </resources>
 </document>

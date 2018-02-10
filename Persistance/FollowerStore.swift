@@ -12,17 +12,22 @@ final class FollowerStore {
     
     // singleton object......... that manage all operation of database  in system......
     static let shared = FollowerStore()
+    
     private init() {
         // get all followers from document dirctory in application Sandbox
         if let archivedFollowers = NSKeyedUnarchiver.unarchiveObject(withFile: followersArchiveURL.path) as? [Follower] {
-            followers = archivedFollowers
+            savedFollowers = archivedFollowers
         }
     }
     /////
     
-    // refrence
-    var followers = [Follower]()
-    // path on mobile
+    // refrence old Followers
+    var savedFollowers = [Follower]()
+    
+    // refrence new followers if connected to internet
+    var newFollowers = [Follower]()
+    
+    // path on mobile sand box
     let followersArchiveURL: URL = {
         let documentsDirectories =
             FileManager.default.urls(for: .documentDirectory,
@@ -33,7 +38,7 @@ final class FollowerStore {
     
     // helper Function......
     func append(with followers: [Follower]) {
-        self.followers += followers
+        self.newFollowers += followers
     }
     
     func getTweets(of follower: Follower) -> [Tweet]? {
@@ -46,18 +51,19 @@ final class FollowerStore {
     
     // save to disk.......
     func save() -> Bool {
-        print("followers path url \(followersArchiveURL)")
-        return NSKeyedArchiver.archiveRootObject(followers, toFile: followersArchiveURL.path)
+//        print("followers path url \(followersArchiveURL)")
+        return NSKeyedArchiver.archiveRootObject(newFollowers, toFile: followersArchiveURL.path)
     }
     
     func updateDatabase() -> Bool {
         do{
+            // remove old followers from mobile memory and update database...... with new followers
             let exist = FileManager.default.fileExists(atPath: followersArchiveURL.path)
-            if exist {
+            if exist, !newFollowers.isEmpty {
                 try FileManager.default.removeItem(atPath: followersArchiveURL.path)
+                let x = save()
+                x ? print("saved updates successfully") : print("error in updating database \(followersArchiveURL.path)")
             }
-            let x = save()
-            x ? print("saved updates successfully") : print("error in updating database \(followersArchiveURL.path)")
             return true
         }
         catch {

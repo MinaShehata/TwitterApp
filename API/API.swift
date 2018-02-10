@@ -18,11 +18,11 @@ final class API
     // reference for persistance
 //    var followerStore = FollowerStore()
     
-    // page defaults to 1
+    // page defaults to -1
     func followers(cursor: Int64 = -1, completion: @escaping (_ followers: [Follower]?, _ next_cursor: Int64, _ error :Error?) -> ()) {
         let url = Constants.followers
         if let user = helper.getCredential() {
-            let parameter: [String: String] = ["screen_name": user.userName, "cursor": "\(cursor)", "count": "10"]
+            let parameter: [String: String] = ["screen_name": user.userName, "cursor": "\(cursor)", "count": "10"] // 10 per page
             let token = ["Authorization" :"Bearer " + user.bearer_token]
             Loader.getAllFollowersFromServer(cursor: cursor, withURL: url, parameter: parameter, token: token, completion: { (followers, success, error, next_cursor) in
                 if let error = error {
@@ -33,8 +33,6 @@ final class API
               
                 if let fs = followers {
                     FollowerStore.shared.append(with: fs)
-                    let _ = FollowerStore.shared.updateDatabase()
-                    print("update followers in database")
                     DispatchQueue.main.async {
                         completion(fs, next_cursor, nil)
                     }
@@ -55,12 +53,7 @@ final class API
                     return
                 }
                 if let tw = tweets {
-
                     FollowerStore.shared.setTweets(of: follower, with: tw)
-                    let grant = FollowerStore.shared.updateDatabase()
-                    print("update followers in database -------\(grant)")
-                    print("upate status of tweets ---------\(grant)")
-                    // save in background thread
                     DispatchQueue.main.async {
                         completion(tw, nil)
                     }
