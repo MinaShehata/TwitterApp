@@ -1,3 +1,9 @@
 
+/* Class = "UISegmentedControl"; 5Ep-YH-50o.segmentTitles[0] = "English"; ObjectID = "5Ep-YH-50o"; */
+"5Ep-YH-50o.segmentTitles[0]" = "English";
+
+/* Class = "UISegmentedControl"; 5Ep-YH-50o.segmentTitles[1] = "عربي"; ObjectID = "5Ep-YH-50o"; */
+"5Ep-YH-50o.segmentTitles[1]" = "عربي";
+
 /* Class = "UILabel"; text = "TWITTER"; ObjectID = "CXw-F9-OOr"; */
-"CXw-F9-OOr.text" = "TWITTER";
+"CXw-F9-OOr.text" = "عربي";

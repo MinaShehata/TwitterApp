@@ -20,31 +20,38 @@ class ProfileViewController: BaseVC {
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var clickableImageView: UIImageView! {
         didSet {
-            let tapGesture = UITapGestureRecognizer(target: self, action: #selector(closeScrollView))
-            tapGesture.numberOfTapsRequired = 1
-            clickableImageView.addGestureRecognizer(tapGesture)
+            let swipeGesture = UISwipeGestureRecognizer(target: self, action: #selector(closeScrollView))
+            swipeGesture.direction = .up
+            clickableImageView.addGestureRecognizer(swipeGesture)
         }
     }
-    
-    @objc func closeScrollView() {
+    @objc private func closeScrollView() {
+        setupAnimation()
+    }
+    private func setupAnimation() {
         scrollView.zoomScale = 1.0
-        scrollView.alpha = 0
+
+        UIView.animate(withDuration: 0.5, animations: {
+            self.clickableImageView.transform = CGAffineTransform(translationX: 0, y: -(self.view.frame.height / 2))
+            self.scrollView.alpha = 0
+        })
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        scrollView.alpha = 0
-        scrollView.delegate = self
-        scrollView.minimumZoomScale = 1.0
-        scrollView.maximumZoomScale = 3.0
+        
         // CollectionView Setup.....
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.register(UINib(nibName: Constants.ProfileHeader, bundle: nil), forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: Constants.ProfileHeader)
         collectionView.register(UINib(nibName: Constants.TweetCell, bundle: nil), forCellWithReuseIdentifier: Constants.TweetCell)
-        
         profileLayout.headerReferenceSize = CGSize(width: view.frame.width, height: 200)
+        // scrollViewSetup ...
+        scrollView.minimumZoomScale = 1.0
+        scrollView.maximumZoomScale = 3.0
+        
+        //        get data from network
         helper.connected ? getLastTenTweets() : loadOflineStorage()
-
+        
     }
     
     private func getLastTenTweets() {
@@ -68,8 +75,18 @@ class ProfileViewController: BaseVC {
         }
     }
 
+    // this outlet of button just for localization........
+    @IBOutlet weak var backButtonImage: UIButtonX! {
+        didSet {
+            let imageButton = Language.currentLanguage() == "ar" ? #imageLiteral(resourceName: "BackButtonForArabic") : #imageLiteral(resourceName: "BackButton")
+            backButtonImage.setImage(imageButton, for: .normal)
+        }
+    }
+    
     @IBAction func backButton(_ sender: UIButtonX)
     {
+        // set here for localization Direction.......
+        
         self.navigationController?.popViewController(animated: true) // pop or back to followers vc
     }
     override var preferredStatusBarStyle: UIStatusBarStyle

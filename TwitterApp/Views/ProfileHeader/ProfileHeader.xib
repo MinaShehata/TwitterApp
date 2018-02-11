@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionReusableView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ProfileHeader" id="U6b-Vx-4bR" customClass="ProfileHeader" customModule="TwitterApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="485" height="279"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <subviews>
+                <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="S7S-T3-cQf" customClass="customImageView" customModule="TwitterApp" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="0.0" width="485" height="184.5"/>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </imageView>
+                <imageView clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gOX-gc-Sdj" customClass="customImageView" customModule="TwitterApp" customModuleProvider="target">
+                    <rect key="frame" x="20" y="144.5" width="80" height="80"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="80" id="Nwd-Y6-ILD"/>
+                        <constraint firstAttribute="width" constant="80" id="lwS-Ea-1fs"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <real key="value" value="40"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                            <real key="value" value="2"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                            <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </imageView>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="eoH-DA-Q8J">
+                    <rect key="frame" x="20" y="229.5" width="110.5" height="39.5"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mina Shehata" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wQD-kN-4L6">
+                            <rect key="frame" x="0.0" y="0.0" width="110.5" height="21.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@minashehata5" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ge6-yP-a7h">
+                            <rect key="frame" x="0.0" y="21.5" width="110.5" height="18"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <color key="textColor" red="0.43141971768158838" green="0.44834360585189315" blue="0.46179013324873097" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                </stackView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lLC-14-d7Q" customClass="UIButtonX" customModule="TwitterApp" customModuleProvider="target">
+                    <rect key="frame" x="325" y="194.5" width="150" height="34"/>
+                    <color key="backgroundColor" red="0.34509803919999998" green="0.68235294120000001" blue="0.94117647059999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="34" id="RVI-c9-Djw"/>
+                        <constraint firstAttribute="width" constant="150" id="xU6-28-Plj"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <state key="normal" title="Following You">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <real key="value" value="5"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kWS-8H-uGl">
+                    <rect key="frame" x="284" y="194.5" width="36" height="34"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="36" id="ARU-UV-t54"/>
+                        <constraint firstAttribute="height" constant="34" id="ySC-ix-FZ8"/>
+                    </constraints>
+                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <state key="normal" image="ConfigButton"/>
+                </button>
+            </subviews>
+            <constraints>
+                <constraint firstItem="gOX-gc-Sdj" firstAttribute="leading" secondItem="VXr-Tz-HHm" secondAttribute="leading" constant="20" id="00I-JL-Cir"/>
+                <constraint firstItem="gOX-gc-Sdj" firstAttribute="top" secondItem="S7S-T3-cQf" secondAttribute="bottom" constant="-40" id="5Tk-1t-cKG"/>
+                <constraint firstItem="S7S-T3-cQf" firstAttribute="trailing" secondItem="VXr-Tz-HHm" secondAttribute="trailing" id="7gu-DV-DbR"/>
+                <constraint firstItem="eoH-DA-Q8J" firstAttribute="leading" secondItem="gOX-gc-Sdj" secondAttribute="leading" id="OWN-lx-QC7"/>
+                <constraint firstItem="kWS-8H-uGl" firstAttribute="centerY" secondItem="lLC-14-d7Q" secondAttribute="centerY" id="aOu-Q8-pwq"/>
+                <constraint firstItem="eoH-DA-Q8J" firstAttribute="top" secondItem="gOX-gc-Sdj" secondAttribute="bottom" constant="5" id="cLb-FT-T6J"/>
+                <constraint firstItem="S7S-T3-cQf" firstAttribute="top" secondItem="VXr-Tz-HHm" secondAttribute="top" id="dUJ-gg-l3k"/>
+                <constraint firstItem="VXr-Tz-HHm" firstAttribute="bottom" secondItem="eoH-DA-Q8J" secondAttribute="bottom" constant="10" id="ixN-WA-vbq"/>
+                <constraint firstItem="VXr-Tz-HHm" firstAttribute="trailing" secondItem="lLC-14-d7Q" secondAttribute="trailing" constant="10" id="jGA-9y-H9y"/>
+                <constraint firstItem="lLC-14-d7Q" firstAttribute="leading" secondItem="kWS-8H-uGl" secondAttribute="trailing" constant="5" id="mAi-Ec-G7x"/>
+                <constraint firstItem="lLC-14-d7Q" firstAttribute="top" secondItem="S7S-T3-cQf" secondAttribute="bottom" constant="10" id="uIK-LA-3f1"/>
+                <constraint firstItem="S7S-T3-cQf" firstAttribute="leading" secondItem="VXr-Tz-HHm" secondAttribute="leading" id="v1h-6p-HYP"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="VXr-Tz-HHm"/>
+            <connections>
+                <outlet property="followingButton" destination="lLC-14-d7Q" id="MW3-vG-aW0"/>
+                <outlet property="handleLabel" destination="Ge6-yP-a7h" id="eJg-hp-TwZ"/>
+                <outlet property="profile_banner_imageView" destination="S7S-T3-cQf" id="uyJ-2F-aef"/>
+                <outlet property="profile_picture_imageView" destination="gOX-gc-Sdj" id="bDl-Dl-95s"/>
+                <outlet property="userNameLabel" destination="wQD-kN-4L6" id="HDD-w4-kYm"/>
+            </connections>
+            <point key="canvasLocation" x="-33.5" y="407.5"/>
+        </collectionReusableView>
+    </objects>
+    <resources>
+        <image name="ConfigButton" width="36" height="34"/>
+    </resources>
+</document>

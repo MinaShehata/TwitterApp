@@ -9,7 +9,7 @@
 import UIKit
 
 class ProfileHeader: UICollectionReusableView {
-
+    
     @IBOutlet weak var profile_banner_imageView: customImageView!
     @IBOutlet weak var profile_picture_imageView: customImageView!
     @IBOutlet weak var userNameLabel: UILabel!
@@ -33,7 +33,7 @@ class ProfileHeader: UICollectionReusableView {
                         if let image = self.profile_banner_imageView.image , let id = follower.banner_picture_id {
                             ImageStore.shared.setImage(image, forKey: id) // set net ........
                             helper.clickableBannerImageView = image
-
+                            
                         }
                     }
                 })
@@ -57,7 +57,7 @@ class ProfileHeader: UICollectionReusableView {
             }
         }
         else {
-           
+            
             if let id = follower.banner_picture_id, let image = ImageStore.shared.image(forKey: id) {
                 DispatchQueue.main.async {
                     self.profile_banner_imageView.image = image
@@ -72,9 +72,10 @@ class ProfileHeader: UICollectionReusableView {
                 }
             }
         }
-    
+        
         userNameLabel.text = follower.userName
         handleLabel.text = "@\(follower.handle)"
     }
-
+    
 }
+

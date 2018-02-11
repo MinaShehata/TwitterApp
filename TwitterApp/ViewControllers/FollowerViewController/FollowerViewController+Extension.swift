@@ -15,28 +15,40 @@ extension FollowerViewController: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
+        // get Approximate width
         let follower = followers[indexPath.item]
-        let aproximateWidthOfBioTextView = view.frame.width - 16 - 40 - 5 - 16 - 10
-        
+        let aproximateWidthOfBioTextView = view.frame.width - 70
+        /////////////////////////////////////////////////////////////////////////
+        // if user switch to landscape mode
+        let landscape = UIDevice.current.orientation.isLandscape
+        if landscape {
+            let width = (view.frame.width / 2) - 24 // for 12 , 12 left and right
+            // if has bio or not
+            if let bio = follower.bio, follower.bio != "" {
+                let estimatedFrame = helper.estimateFrameForText(text: bio, size: aproximateWidthOfBioTextView).height + 20
+                let height = estimatedFrame + 70
+                return CGSize(width: width, height: height)
+            }
+            return CGSize(width: width, height: 70)
+        }
+        /////////////////////////////////////////
+        // if user switch to portrait mode................
         // if has bio or not
         if let bio = follower.bio, follower.bio != "" {
-            let estimatedFrame = helper.estimateFrameForText(text: bio, size: aproximateWidthOfBioTextView).height + 10
-            return CGSize(width: view.frame.width, height: estimatedFrame + 50)
-            
+            let estimatedFrame = helper.estimateFrameForText(text: bio, size: aproximateWidthOfBioTextView).height + 20
+            return CGSize(width: view.frame.width, height: estimatedFrame + 70)
         }
         
-        return CGSize(width: view.frame.width, height: 50)
+        return CGSize(width: view.frame.width, height: 70) // default height if it no bio for this follower
     }
     
+
+        ///////////////////////////////////////////////////////////////////////
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         let selectedFollower = followers[indexPath.item]
         performSegue(withIdentifier: Constants.follower_profile_data, sender: selectedFollower)
     }
-    
-    
-    
     
     
     /// pagination load more.......

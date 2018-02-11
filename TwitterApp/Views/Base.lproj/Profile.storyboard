@@ -20,7 +20,7 @@
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="d4V-3I-u0H">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="vBa-OE-ytb" customClass="ProfileLayout" customModule="TwitterApp" customModuleProvider="target">
                                     <size key="itemSize" width="50" height="50"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -35,7 +35,8 @@
                                     <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wpb-9W-hHm" customClass="UIButtonX" customModule="TwitterApp" customModuleProvider="target">
                                         <rect key="frame" x="5" y="5" width="22" height="22"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                                        <state key="normal" image="BackButton" backgroundImage="button:Wpb-9W-hHm:backgroundImage"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" backgroundImage="button:Wpb-9W-hHm:backgroundImage"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                 <real key="value" value="16"/>
@@ -62,7 +63,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CxR-GM-iJq">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CxR-GM-iJq">
                                 <rect key="frame" x="0.0" y="-30" width="375" height="697"/>
                                 <subviews>
                                     <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder_image" translatesAutoresizingMaskIntoConstraints="NO" id="Krp-GG-Dt0">
@@ -78,6 +79,9 @@
                                     <constraint firstAttribute="trailing" secondItem="Krp-GG-Dt0" secondAttribute="trailing" id="bnh-Yx-9X3"/>
                                     <constraint firstItem="Krp-GG-Dt0" firstAttribute="leading" secondItem="CxR-GM-iJq" secondAttribute="leading" id="iav-9U-NmO"/>
                                 </constraints>
+                                <connections>
+                                    <outlet property="delegate" destination="mxN-4G-W3D" id="uUA-UC-Fz3"/>
+                                </connections>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -96,6 +100,7 @@
                         <viewLayoutGuide key="safeArea" id="fAT-9t-5Bg"/>
                     </view>
                     <connections>
+                        <outlet property="backButtonImage" destination="Wpb-9W-hHm" id="I9F-CE-ddW"/>
                         <outlet property="clickableImageView" destination="Krp-GG-Dt0" id="TlR-ZS-OgE"/>
                         <outlet property="collectionView" destination="d4V-3I-u0H" id="cGA-VR-HGF"/>
                         <outlet property="profileLayout" destination="vBa-OE-ytb" id="a41-bd-3yv"/>
@@ -108,7 +113,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="BackButton" width="32" height="32"/>
         <image name="button:Wpb-9W-hHm:backgroundImage" width="32" height="32">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGVVZYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK8QEgcI

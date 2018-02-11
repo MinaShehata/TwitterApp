@@ -12,13 +12,15 @@ import UIKit
 extension ProfileViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if let follower = follower, let tweets = follower.tweets {
-            let text = tweets[indexPath.item].text
-            let approximateWidthForTweetText = view.frame.width - 50 - 44
+            if let text = tweets[indexPath.item].text {
+            let approximateWidthForTweetText = view.frame.width - 73
             
-            let estimatedHeight = helper.estimateFrameForText(text: text, size: approximateWidthForTweetText).height + 10
-            return CGSize(width: view.frame.width, height: estimatedHeight + 40)
+            let estimatedHeight = helper.estimateFrameForText(text: text, size: approximateWidthForTweetText).height + 20
+            return CGSize(width: view.frame.width, height: estimatedHeight + 52)
+            }
         }
-        return CGSize.zero
+        return CGSize(width: view.frame.width, height: 52)
+        
     }
     // grid setup here
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {

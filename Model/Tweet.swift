@@ -20,7 +20,7 @@ import  SwiftyJSON
 class Tweet: NSObject, NSCoding {
    
     weak var follower: Follower?
-    var text: String
+    var text: String?
     var created_at: String
     init?(dict: [String: JSON],follower: Follower?) {
         guard let text = dict["text"]?.stringValue, let created_at = dict["created_at"]?.string else { return nil }
@@ -37,7 +37,7 @@ class Tweet: NSObject, NSCoding {
     
     required init?(coder aDecoder: NSCoder) {
         follower = aDecoder.decodeObject(forKey: "follower") as! Follower?
-        text = aDecoder.decodeObject(forKey: "text") as! String
+        text = aDecoder.decodeObject(forKey: "text") as! String?
         created_at = aDecoder.decodeObject(forKey: "created_at") as! String
         super.init()
     }

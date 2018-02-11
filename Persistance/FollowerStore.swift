@@ -59,12 +59,14 @@ final class FollowerStore {
         do{
             // remove old followers from mobile memory and update database...... with new followers
             let exist = FileManager.default.fileExists(atPath: followersArchiveURL.path)
-            if exist, !newFollowers.isEmpty {
+            if exist {
                 try FileManager.default.removeItem(atPath: followersArchiveURL.path)
+            }
+            if !newFollowers.isEmpty {
                 let x = save()
                 x ? print("saved updates successfully") : print("error in updating database \(followersArchiveURL.path)")
+                return true
             }
-            return true
         }
         catch {
             print("error in updating database \(error.localizedDescription)")

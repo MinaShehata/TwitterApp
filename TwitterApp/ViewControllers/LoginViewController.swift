@@ -14,21 +14,15 @@ class LoginViewController: BaseVC {
         didSet
         {
             // for using tint color didn't work from interface builder xcode bug.
-            twitterLogoImageView.tintColor = #colorLiteral(red: 0.2514260113, green: 0.4632044435, blue: 0.6128600836, alpha: 1)
+            twitterLogoImageView.tintColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
             twitterLogoImageView.image = #imageLiteral(resourceName: "Tweeter logo")
         }
     }
     
-    @IBOutlet weak private var twitterTitleLabel: UILabel! {
-        didSet {
-            twitterTitleLabel.text = NSLocalizedString("Twitter", comment: "change Logo Name")
-        }
-    }
-    
+    @IBOutlet weak private var twitterTitleLabel: UILabel!
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         langSegmentControl.selectedSegmentIndex = Language.currentLanguage() == "ar" ? 1 : 0
-        langSegmentControl.setTitle(Language.currentLanguage() == "ar" ? "عربي" : "English", forSegmentAt: 0) 
         setupAnimation()
         setupLoginButton()
         
@@ -57,7 +51,6 @@ class LoginViewController: BaseVC {
     @IBAction func ChangeLanguage(_ sender: UISegmentedControl) {
         if  Language.currentLanguage() == "ar"
         {
-            twitterLogoImageView.tintColor = #colorLiteral(red: 0.1365008056, green: 0.276440084, blue: 0.360370636, alpha: 1)
             langSegmentControl.selectedSegmentIndex = 0
             Language.setAppLanguage(lang: "en-US")
             UIView.appearance().semanticContentAttribute = .forceLeftToRight
@@ -65,7 +58,6 @@ class LoginViewController: BaseVC {
         else
         {
             langSegmentControl.selectedSegmentIndex = 1
-            twitterLogoImageView.tintColor = #colorLiteral(red: 0.3219999969, green: 0.5429999828, blue: 0.4979999959, alpha: 1)
 
             Language.setAppLanguage(lang: "ar")
             UIView.appearance().semanticContentAttribute = .forceRightToLeft
@@ -75,7 +67,6 @@ class LoginViewController: BaseVC {
         
         let sb = UIStoryboard(name: "Start", bundle: nil)
         mainWindow?.rootViewController = sb.instantiateViewController(withIdentifier: "rootVC")
-        
         UIView.transition(with: mainWindow!, duration: 0.5, options: [.transitionFlipFromLeft], animations: nil, completion: nil)
         
     }

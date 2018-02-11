@@ -11,6 +11,7 @@ import UIKit
 class FollowerViewController: BaseVC {
 
     @IBOutlet weak var collectionView: UICollectionView!
+
     
     // lazy means instantiate refresh control just when user refresh
     final lazy var refreshControll: UIRefreshControl = {
@@ -29,8 +30,9 @@ class FollowerViewController: BaseVC {
         collectionView.dataSource = self
         collectionView.register(UINib(nibName: Constants.FollowerCell, bundle: nil), forCellWithReuseIdentifier: Constants.FollowerCell)
         collectionView.refreshControl = refreshControll
-        collectionView.contentInset = UIEdgeInsets(top: 5, left: 0, bottom: 0, right: 0)
+        collectionView.contentInset = UIEdgeInsets(top: 5, left: 5, bottom: 0, right: 5)
         setupNavigationBarButtons()
+
         // if connected load data from network else load from offline store
         helper.connected ? getAllFollowers() : loadOfflineData()
         
@@ -49,14 +51,18 @@ class FollowerViewController: BaseVC {
     final private func setupNavigationBarButtons(){
         let signout = NSLocalizedString("SignOut", comment: "sign out button Name")
         let signOutButton = UIBarButtonItem(title: signout, style: .plain, target: self, action: #selector(SignOutUser))
+        signOutButton.tintColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         
         navigationItem.leftBarButtonItem = signOutButton
         
         let composeTweet = UIBarButtonItem(image: #imageLiteral(resourceName: "Compose Tweet"), style: .plain, target: nil, action: nil)
+        composeTweet.tintColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
          let searchTweet = UIBarButtonItem(image: #imageLiteral(resourceName: "Search"), style: .plain, target: nil, action: nil)
+        searchTweet.tintColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         navigationItem.rightBarButtonItems = [composeTweet, searchTweet]
         //
         let imageView = UIImageView(image: #imageLiteral(resourceName: "Tweeter logo"))
+        imageView.tintColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         imageView.contentMode = .scaleAspectFit
         imageView.frame = CGRect(x: 0, y: 0, width: 40, height: 28)
         let view = UIView(frame: CGRect(x: 0, y: 0, width: 40, height: 28))
@@ -134,6 +140,9 @@ class FollowerViewController: BaseVC {
             }
         }
     }
-
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
 }
 

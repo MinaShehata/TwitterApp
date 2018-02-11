@@ -48,9 +48,10 @@ class TweetCell: UICollectionViewCell {
         }
 
 
-        
-        let textViewAttributed = NSAttributedString(string: tweet.text, attributes: [NSAttributedStringKey.font : UIFont.systemFont(ofSize: 14)])
-        tweetTextView.attributedText = textViewAttributed
+        if let text = tweet.text {
+            let textViewAttributed = NSAttributedString(string: text, attributes: [NSAttributedStringKey.font : UIFont.systemFont(ofSize: 14)])
+            tweetTextView.attributedText = textViewAttributed
+        }
         guard let follower = tweet.follower else { return }
         let usernameText = NSAttributedString(string: follower.userName, attributes: [NSAttributedStringKey.font : UIFont.boldSystemFont(ofSize: 15), NSAttributedStringKey.foregroundColor: #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)])
         usernameLabel.attributedText = usernameText
