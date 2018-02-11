@@ -37,7 +37,7 @@ class FollowerCell: UICollectionViewCell {
             BioTextView.attributedText = attributedBio
         }
 
-        // setup Image
+        // if connected then download image and save it, else read image from database.....
         if helper.connected {
             if let profilePicURL = follower.profile_picture_URL {
                 profile_picture_URL.loadProfileImageWithUrl(url: profilePicURL, completion: {

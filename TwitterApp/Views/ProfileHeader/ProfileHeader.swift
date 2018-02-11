@@ -25,7 +25,7 @@ class ProfileHeader: UICollectionReusableView {
     
     
     func setupHeader(with follower: Follower) {
-        
+        // if connected then download image and save it, else read image from database.....
         if helper.connected {
             if let url = follower.profile_banner_url {
                 profile_banner_imageView.loadProfileImageWithUrl(url: url, completion: {

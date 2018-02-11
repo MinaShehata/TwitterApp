@@ -8,6 +8,7 @@
 
 import Foundation
 
+// through this class i handle all persistance operation of whole project like saving deleting, appending, .....
 final class FollowerStore {
     
     // singleton object......... that manage all operation of database  in system......
@@ -36,7 +37,7 @@ final class FollowerStore {
         return documentDirectory.appendingPathComponent("followers.archive")
     }()
     
-    // helper Function......
+    // 3 helper Functions......
     func append(with followers: [Follower]) {
         self.newFollowers += followers
     }
@@ -48,7 +49,7 @@ final class FollowerStore {
     func setTweets(of follower: Follower, with tweets: [Tweet]) {
         follower.tweets = tweets
     }
-    
+    /////////////////////
     // save to disk.......
     func save() -> Bool {
 //        print("followers path url \(followersArchiveURL)")

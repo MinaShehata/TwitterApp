@@ -39,7 +39,7 @@ class LoginViewController: BaseVC {
         twitterTitleLabel.alpha = 0
         twitterLogoImageView.alpha = 0
         
-        UIView.animate(withDuration: 2.0, delay: 0, options: [.repeat, .autoreverse], animations: {
+        UIView.animate(withDuration: 1.0, delay: 0, options: [.repeat, .autoreverse], animations: {
             self.twitterTitleLabel.alpha = 1
             self.twitterLogoImageView.alpha = 1
         })
@@ -68,7 +68,6 @@ class LoginViewController: BaseVC {
         let sb = UIStoryboard(name: "Start", bundle: nil)
         mainWindow?.rootViewController = sb.instantiateViewController(withIdentifier: "rootVC")
         UIView.transition(with: mainWindow!, duration: 0.5, options: [.transitionFlipFromLeft], animations: nil, completion: nil)
-        
     }
 }
 

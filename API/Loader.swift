@@ -10,9 +10,9 @@ import Foundation
 import Alamofire
 import SwiftyJSON
 
-// loader class from network ..........
+// loader class for network tasks just ..........
 final class Loader {
-    
+    // return with next page and fowllowers on that page else fail return error
     class func getAllFollowersFromServer(cursor: Int64, withURL url: String, parameter: [String: Any], token: HTTPHeaders, completion: @escaping (_ followers: [Follower]?, _ success: Bool?, _ error: Error?, _ next_cursor: Int64) -> ()) {
         Alamofire.request(url, method: .get, parameters: parameter, encoding: URLEncoding.default, headers: token)
         .validate(statusCode: 200..<300)
@@ -38,7 +38,7 @@ final class Loader {
                 }
         }
     }
-    
+    // return with last 10 tweets of that user .....
     class func getLastTenTweetForFollower(_ follower: Follower, withURL url: String, parameter: [String: String], token: HTTPHeaders, completion: @escaping (_ tweets: [Tweet]?, _ success: Bool?, _ error: Error?) -> ()) {
         Alamofire.request(url, method: .get, parameters: parameter, encoding: URLEncoding.default, headers: token)
             .validate(statusCode: 200..<300)

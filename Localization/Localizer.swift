@@ -15,7 +15,6 @@ class Localizer
         exchangeMethodForClass(className: Bundle.self, originalSelector: #selector(Bundle.localizedString(forKey:value:table:))
             , overrideSelector: #selector(Bundle.customLocalizedStringForKey(forKey:value:table:)))
         
-        
         exchangeMethodForClass(className: UIApplication.self, originalSelector: #selector(getter: UIApplication.userInterfaceLayoutDirection), overrideSelector: #selector(getter: UIApplication.custom_userInterfaceLayoutDirection))
         
     }

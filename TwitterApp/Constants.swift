@@ -8,6 +8,7 @@
 
 import Foundation
 
+// this class contain all constants through our project 
 class Constants {
     static let consumerKey = "tIGC04jlRQINK9psdsEyPg6GI"
     static let consumerSecret = "vLqhm04cyRrW7jeKMgwrX5ukyNsKyHOrrZSkKX56AXzJhOQ9MW"

@@ -28,6 +28,7 @@ class ProfileViewController: BaseVC {
     @objc private func closeScrollView() {
         setupAnimation()
     }
+    // hide clickable image and scrollview when user swipe up.........
     private func setupAnimation() {
         scrollView.zoomScale = 1.0
 
@@ -36,6 +37,7 @@ class ProfileViewController: BaseVC {
             self.scrollView.alpha = 0
         })
     }
+    ////////////////////////////////////////////////////////
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -68,6 +70,7 @@ class ProfileViewController: BaseVC {
             }
         }
     }
+    // load from data base...........
     func loadOflineStorage() {
         if let follower = follower {
             follower.tweets = FollowerStore.shared.getTweets(of: follower)

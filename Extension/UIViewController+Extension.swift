@@ -8,6 +8,7 @@
 
 import UIKit
 
+// show error when network is offline if error in saving etc..........
 extension UIViewController {
     func showAlert (title :String , message:String , okTitle: String = "Ok" , Okhandler: ((UIAlertAction)->())? = nil){
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
@@ -17,7 +18,7 @@ extension UIViewController {
     
 }
 
-//power of inhertance will show on this class and code refactoring........
+// inhertance this class and code refactoring........
 class BaseVC: UIViewController {
     // for persistance needs
     required init?(coder aDecoder: NSCoder) {
@@ -28,7 +29,7 @@ class BaseVC: UIViewController {
         super.viewDidLoad()
         helper.addNetworkObserver(on: self)
     }
-    
+
     // for network status listner
     @objc func networkStatusChanged(_ notification: Notification) {
         let status = Reach().connectionStatus()

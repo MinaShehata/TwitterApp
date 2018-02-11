@@ -9,6 +9,7 @@
 import Foundation
 import SwiftyJSON
 
+// follower model objects that reperesent every follower in project
 class Follower: NSObject, NSCoding {
    
     var userName: String

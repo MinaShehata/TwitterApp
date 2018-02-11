@@ -11,6 +11,7 @@ import UIKit
 // cache image after downloading from internet
 let imageCashe = NSCache<NSString , UIImage>()
 // this class implement MVVM (Model View, View Model) Design Pattern
+// it prepare image from model(url) to present it to view
 class customImageView: UIImageViewX {
     var imageUrl: URL?
 

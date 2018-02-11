@@ -8,8 +8,8 @@
 
 import UIKit
 
+// this class handle image saving in database .........
 class ImageStore{
-    
     static let shared = ImageStore()
     private init() {}
     
@@ -28,12 +28,9 @@ class ImageStore{
     func setImage(_ image: UIImage, forKey key: String) {
         cache.setObject(image, forKey: key as NSString)
         
-        // Create full URL for image
         let url = imageURL(forKey: key)
         deleteImage(forKey: key)
-        // Turn image into JPEG data
         if let data = UIImageJPEGRepresentation(image, 0.5) {
-            // Write it to full URL
             let _ = try? data.write(to: url, options: [.atomic])
         }
     }

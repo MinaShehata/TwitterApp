@@ -10,9 +10,9 @@ import UIKit
 
 class helper: NSObject {
     
+    // save bearer_token to user Defaults
     class func saveCredential(bearer_token: String, username: String)
     {
-        // save api_token to user Defaults
         let def = UserDefaults.standard
         def.set(username, forKey: "username")
         def.set(bearer_token, forKey: "bearer_token")
@@ -20,6 +20,7 @@ class helper: NSObject {
         
         restartApp()
     }
+    // remove credintial if new user want to login.......
     class func removeCredential() {
         let def = UserDefaults.standard
         def.removeObject(forKey: "username")
@@ -28,7 +29,7 @@ class helper: NSObject {
         restartApp()
     }
     
-    // get user as save it
+    // get user as save it to make request to server.......
     class func getCredential() -> User? {
         let def = UserDefaults.standard
         if let username = def.object(forKey: "username") as? String, let bearer_token = def.object(forKey: "bearer_token") as? String {
@@ -38,7 +39,7 @@ class helper: NSObject {
         return nil
     }
     
-    // retart app after login or register
+    // retart app after login or sign out.........
     class func restartApp(){
         
         guard let window = UIApplication.shared.keyWindow else { return }
@@ -57,7 +58,7 @@ class helper: NSObject {
         UIView.transition(with: window, duration: 1, options: [], animations: nil, completion: nil)
     }
     
-    
+    // help for calculate text view size based on Text size........
     class func estimateFrameForText(text: String, size: CGFloat) -> CGRect {
         // this attribute must be big than prefered font
         let attribute = [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 16)]

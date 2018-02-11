@@ -16,7 +16,7 @@ import  SwiftyJSON
     //"id_str": "960574424717119488",
     //"text": "RT @isararah_: طرزان بنفسه ما عاشرش كمية الحيوانات اللي انا عاشرتها.",
 //}
-
+// model tweet that represent every tweet in data base .......
 class Tweet: NSObject, NSCoding {
    
     weak var follower: Follower?
@@ -28,7 +28,7 @@ class Tweet: NSObject, NSCoding {
         self.text = text
         self.created_at = created_at.formatDateFromServer()
     }
-    
+    // persistance encoding for save in database
     func encode(with aCoder: NSCoder) {
         aCoder.encode(follower, forKey: "follower")
         aCoder.encode(text, forKey: "text")

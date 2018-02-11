@@ -10,7 +10,7 @@ import Foundation
 import TwitterKit
 
 final class AuthController: NSObject {
-
+    
     class func signedIn(view: UIView, with completion: @escaping (User) -> ()) {
         getBearerToken()
         let loginButton = TWTRLogInButton { (session, error) in
@@ -25,9 +25,11 @@ final class AuthController: NSObject {
                 })
             }
         }
-        
-        loginButton.center = view.center
         view.addSubview(loginButton)
+        loginButton.translatesAutoresizingMaskIntoConstraints = false
+        loginButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        loginButton.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        
     }
     
     

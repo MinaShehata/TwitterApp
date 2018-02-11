@@ -27,6 +27,7 @@ class TweetCell: UICollectionViewCell {
     
     func setupTweet(with tweet: Tweet)
     {
+        // if connected then download image and save it, else read image from database.....
         if helper.connected {
             if let followerProfilePicture = tweet.follower?.profile_picture_URL {
                 profile_picture_imageView.loadProfileImageWithUrl(url: followerProfilePicture, completion: {

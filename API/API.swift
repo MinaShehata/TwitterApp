@@ -15,9 +15,8 @@ final class API
     static let shared = API()
     private init(){} // private initializer to make sure that class will not initialize from any other Place....
     
-    // reference for persistance
-//    var followerStore = FollowerStore()
     
+    // here we ask loader class to get some followers to us to present them to View controller
     // page defaults to -1
     func followers(cursor: Int64 = -1, completion: @escaping (_ followers: [Follower]?, _ next_cursor: Int64, _ error :Error?) -> ()) {
         let url = Constants.followers
@@ -40,7 +39,7 @@ final class API
             })
         }
     }
-    
+    // here we ask loader class to get last 10 tweets to us to present them to View controller
     func tweets(of follower: Follower,completion: @escaping ([Tweet]?, _ error: Error?) -> ()) {
         let url = Constants.tweets
         if let user = helper.getCredential() {

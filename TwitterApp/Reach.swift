@@ -10,7 +10,7 @@
 import Foundation
 import SystemConfiguration
 
-
+// get network status ........
 let ReachabilityStatusChangedNotification = "ReachabilityStatusChangedNotification"
 
 enum ReachabilityType: CustomStringConvertible {
