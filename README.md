@@ -1,0 +1,23 @@
+# TwitterApp
+Simple Twitter Client App Showing followers, profile for every follower and some tweets
+
+
+Note: App idea 
+(API Folder) App use Facade pattern to manage all api task like persistance, networking, authentication,etc........
+(Persistance Folder) singleton pattern so we have one instance to manage all database operation....
+(Localization Folder) for change app language 
+(Some helpful extension for smalling code complexity)
+(Model Folder contain all my project models).....
+(helper, constant, classes to make some helper methods that implement quick operation and came back with result....)
+
+how to use app 
+open app login with your twitter account you should see all followers, if you scroll you will load 10 followers 10 , per page...
+if you pull to refresh you will refresh table view and load all followers again
+
+if you tab on any follower a page will open with that follower information and and images,
+if you click on banner image or profle it will open i. scroll View will zoom capability.............
+Note: important :
+1. to hide zoom image you should back it to default zoom size then swipe up it will hide in nice simple animation..........
+2. to save followers to data base you show terminate app from device 
+if you open it from simulator, you shold close app from simulator to save 
+if from scode it wouldn't save because application will trimnate function wouldn't call......
