@@ -99,7 +99,7 @@ class FollowerViewController: BaseVC {
             }
         })
     }
-    
+    // load data from data base if network offline.........
     func loadOfflineData() {
         refreshControll.endRefreshing()
         followers = FollowerStore.shared.savedFollowers
@@ -126,7 +126,7 @@ class FollowerViewController: BaseVC {
         }
     }
     
-    // grid setup here
+    // restart if layout change......
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
         collectionView?.collectionViewLayout.invalidateLayout()

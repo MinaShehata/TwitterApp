@@ -11,7 +11,7 @@ import UIKit
 class ProfileLayout: UICollectionViewFlowLayout {
 
     var hideBackButton:CGFloat = 1
-    
+    // create stretched header when user scroll we add to image height delta height ///
     override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
         let layoutAttributes = super.layoutAttributesForElements(in: rect)
         let offset = collectionView!.contentOffset
