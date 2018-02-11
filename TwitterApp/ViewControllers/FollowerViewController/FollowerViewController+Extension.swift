@@ -26,20 +26,20 @@ extension FollowerViewController: UICollectionViewDelegateFlowLayout {
             // if has bio or not
             if let bio = follower.bio, follower.bio != "" {
                 let estimatedFrame = helper.estimateFrameForText(text: bio, size: aproximateWidthOfBioTextView).height + 20
-                let height = estimatedFrame + 70
+                let height = estimatedFrame + 60
                 return CGSize(width: width, height: height)
             }
-            return CGSize(width: width, height: 70)
+            return CGSize(width: width, height: 60)
         }
         /////////////////////////////////////////
         // if user switch to portrait mode................
         // if has bio or not
         if let bio = follower.bio, follower.bio != "" {
             let estimatedFrame = helper.estimateFrameForText(text: bio, size: aproximateWidthOfBioTextView).height + 20
-            return CGSize(width: view.frame.width, height: estimatedFrame + 70)
+            return CGSize(width: view.frame.width, height: estimatedFrame + 60)
         }
         
-        return CGSize(width: view.frame.width, height: 70) // default height if it no bio for this follower
+        return CGSize(width: view.frame.width, height: 60) // default height if it no bio for this follower
     }
     
 

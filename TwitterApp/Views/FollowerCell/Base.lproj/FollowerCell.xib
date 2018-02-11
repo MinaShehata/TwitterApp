@@ -20,7 +20,7 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Mina2017" translatesAutoresizingMaskIntoConstraints="NO" id="YJv-g9-A5n" customClass="customImageView" customModule="TwitterApp" customModuleProvider="target">
-                        <rect key="frame" x="12" y="12" width="40" height="40"/>
+                        <rect key="frame" x="12" y="7" width="40" height="40"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="40" id="03I-x6-CDT"/>
                             <constraint firstAttribute="width" constant="40" id="Yzk-Te-age"/>
@@ -38,7 +38,7 @@
                         </userDefinedRuntimeAttributes>
                     </imageView>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="0Ar-bp-AiQ">
-                        <rect key="frame" x="57" y="12" width="386" height="40"/>
+                        <rect key="frame" x="57" y="7" width="386" height="40"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mina" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cXg-2Z-eRD">
                                 <rect key="frame" x="0.0" y="0.0" width="386" height="17.5"/>
@@ -58,7 +58,7 @@
                         </constraints>
                     </stackView>
                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" editable="NO" text="Mina Shehata @minashehata5" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ISI-c9-SRX">
-                        <rect key="frame" x="57" y="57" width="386" height="56"/>
+                        <rect key="frame" x="57" y="52" width="386" height="66"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="14"/>
@@ -79,11 +79,11 @@
                 <constraint firstItem="0Ar-bp-AiQ" firstAttribute="leading" secondItem="YJv-g9-A5n" secondAttribute="trailing" constant="5" id="ZrL-TL-tts"/>
                 <constraint firstItem="ISI-c9-SRX" firstAttribute="leading" secondItem="0Ar-bp-AiQ" secondAttribute="leading" id="cvx-hh-n3k"/>
                 <constraint firstAttribute="trailing" secondItem="0Ar-bp-AiQ" secondAttribute="trailing" constant="12" id="eM2-Ym-uGm"/>
-                <constraint firstItem="YJv-g9-A5n" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="12" id="fmn-Px-uoO"/>
+                <constraint firstItem="YJv-g9-A5n" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="7" id="fmn-Px-uoO"/>
                 <constraint firstItem="ISI-c9-SRX" firstAttribute="top" secondItem="0Ar-bp-AiQ" secondAttribute="bottom" constant="5" id="g8a-rF-scZ"/>
                 <constraint firstItem="eZJ-UW-cVD" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="mdh-bS-2Wk"/>
                 <constraint firstAttribute="trailing" secondItem="eZJ-UW-cVD" secondAttribute="trailing" id="ndT-kg-Caf"/>
-                <constraint firstItem="eZJ-UW-cVD" firstAttribute="top" secondItem="ISI-c9-SRX" secondAttribute="bottom" constant="11" id="pLg-mu-GbG"/>
+                <constraint firstItem="eZJ-UW-cVD" firstAttribute="top" secondItem="ISI-c9-SRX" secondAttribute="bottom" constant="6" id="pLg-mu-GbG"/>
                 <constraint firstItem="YJv-g9-A5n" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="12" id="vse-ZO-QrF"/>
                 <constraint firstAttribute="bottom" secondItem="eZJ-UW-cVD" secondAttribute="bottom" id="w6C-lQ-MV8"/>
             </constraints>

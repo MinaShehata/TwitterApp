@@ -59,7 +59,8 @@ final class FollowerStore {
         do{
             // remove old followers from mobile memory and update database...... with new followers
             let exist = FileManager.default.fileExists(atPath: followersArchiveURL.path)
-            if exist {
+            let connected = helper.connected
+            if exist ,connected {
                 try FileManager.default.removeItem(atPath: followersArchiveURL.path)
             }
             if !newFollowers.isEmpty {
